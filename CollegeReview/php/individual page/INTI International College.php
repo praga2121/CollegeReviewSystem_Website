@@ -26,6 +26,8 @@ echo '  </div>';
 echo '</div>';
 echo '<main>';
 echo '<h2 class="subject-header">Description</h2>';
+echo '<p class="college-description">' . $row["college_description"].'</p>';
+echo '<h2 class="subject-header">Location</h2>';
 echo '<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=INTI%20International%20College%20Penang,%201-Z,%20Lebuh%20Bukit%20Jambul,%20Bukit%20Jambul,%2011900%20Bayan%20Lepas,%20Penang+(INTI%20Penang)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.maps.ie/draw-radius-circle-map/">Measure km radius</a></div>';
 //echo '<p class="college-description">'.$row["college_description"].'</p>';
 

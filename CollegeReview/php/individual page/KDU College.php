@@ -27,6 +27,8 @@ echo '</div>';
 echo '<main>';
 echo '<h2 class="subject-header">Description</h2>';
 echo '       <p class="college-description">' . $row["college_description"] . '</p>';
+echo '<h2 class="subject-header">Location</h2>';
+echo'<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=kdu%20college+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.maps.ie/draw-radius-circle-map/">Circle area map</a></div>';
 
 //echo '<div class="w3-row-padding w3-center w3-padding-64" id="pricing">';
 echo '<div class="subject-container">';
