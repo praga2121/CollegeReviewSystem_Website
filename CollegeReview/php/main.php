@@ -46,7 +46,7 @@ echo '<h1 class ="main-container-header">Top Colleges</h1>';
 
 /*  SEARCH BAR*/
 echo '<div class="search">';  
-echo '<input type="search" class="search-box" id="searchInput" onkeyup="tableSearch()" placeholder="Search here" title="Enter a keyword or number">';
+echo '<input type="search" class="search-box" id="searchInput" onkeyup="tableSearch()" placeholder="Search Here" title="Enter a keyword or number">';
 echo '<span class="search-button">';
 echo '<span class="search-icon"></span>';
 echo '</span>';
