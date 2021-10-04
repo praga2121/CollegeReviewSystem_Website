@@ -12,7 +12,7 @@ if (isset($_POST['added'])) {
 
 
   if (!empty($collegename) && !empty($overall) && !empty($performance) && !empty($facilities) && !empty($price) && !empty($academic)) {
-    $query = "INSERT INTO colleges (name, overall, teachingperformance, facilities, price, academicreputation) VALUES ('$collegename', '$overall', '$performance', '$facilities', '$price', '$academic')";
+    $query = "INSERT INTO colleges (name, overall, teachingperformance, facilities, price, academicreputation, college_description) VALUES ('$collegename', '$overall', '$performance', '$facilities', '$price', '$academic', '$college_description')";
     if (@mysqli_query($conn, $query)) {
       echo '<!DOCUMENT html>';
       echo '<html>';

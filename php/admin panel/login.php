@@ -1,8 +1,11 @@
 <?php
+require '../config.php';
+
 if (isset($_POST['submitted'])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
   $query = "SELECT email, password from college_website.admin WHERE email = " . "'" . $email . "'" . " AND password = " . "'" . $password . "'";
+
   $result = mysqli_query($conn, $query);
 
   if (@mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
