@@ -2,11 +2,9 @@
 //require '../support elements/header.php';
 require '../config.php';
 
-#$sql = 'SELECT college_id, name, college_description FROM college_website.colleges WHERE name="DISTED College"';
-$college_name = "DISTED College";
+$college_name = $_GET['college_name'];
 
 $sql = 'SELECT college_id, name, college_description FROM college_website.colleges WHERE name="'.$college_name.'"';
-
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
@@ -37,10 +35,13 @@ echo'<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" 
 //echo '<div class="w3-row-padding w3-center w3-padding-64" id="pricing">';
 echo '<div class="subject-container">';
 echo '<h2 class="subject-header">Subjects</h2>';
+
 $sql_subject = "SELECT `subjects`.`name`,`subjects`.`price`,`subjects`.`duration`,`subjects`.`internship_duration` FROM `collegesandsubjects` LEFT JOIN `subjects` ON `collegesandsubjects`.`subject_id` = `subjects`.`subject_id` WHERE `collegesandsubjects`.`college_id` = '1' AND `subjects`.`subject_id` = `collegesandsubjects`.`subject_id` ";
 $result_subject = mysqli_query($conn, $sql_subject);
 $row_number = mysqli_num_rows($result_subject);
+
 echo '<div class="subject-table-container">';
+
 if ($row_number > 0) {
     while ($row_subject = mysqli_fetch_assoc($result_subject)) {
         echo '<table class="subject-table">';
