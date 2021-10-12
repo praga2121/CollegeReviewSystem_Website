@@ -40,6 +40,7 @@ if (isset($_POST['added'])) {
   if ($resultsCheck > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
       echo "<tr><td>" . $row['name'] . "</td><td><a href='edit-college.php?id=$row[college_id]'>Edit</a></td></tr>";
+      
       //last line
     }
   }
