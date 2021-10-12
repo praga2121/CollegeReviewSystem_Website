@@ -1,4 +1,5 @@
 <?php
+echo '<link rel="stylesheet" href="../../css/style-main.css"/>';
 echo '<!--Navigation bar-->';
 echo '<ul>';
 echo '<li><a href="https://localhost/CollegeReview/php/main.php">ReviewMyCollege</a></li>';
