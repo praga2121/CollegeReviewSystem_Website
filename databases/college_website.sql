@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2020 at 05:17 PM
+-- Generation Time: Oct 14, 2021 at 02:48 PM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,29 +52,6 @@ CREATE TABLE `collegeandreviews` (
   `review_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `collegeandreviews`
---
-
-INSERT INTO `collegeandreviews` (`college_id`, `review_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(2, 4),
-(2, 5),
-(3, 6),
-(3, 7),
-(3, 8),
-(4, 9),
-(4, 10),
-(5, 11),
-(5, 12),
-(5, 13),
-(6, 14),
-(6, 15),
-(6, 16),
-(6, 17);
-
 -- --------------------------------------------------------
 
 --
@@ -103,7 +80,8 @@ INSERT INTO `colleges` (`college_id`, `name`, `overall`, `teachingperformance`, 
 (4, 'Sentral College', '7', '7', '7', '7', '8', 'SENTRAL College Penang serves to provide excellent and honest tertiary education to students through our various programmes.'),
 (5, 'SEGi College', '9', '9', '9', '9', '10', 'SEGi University and Colleges first opened its doors as Systematic College in 1977 in the heart of Kuala Lumpur’s commercial district, offering globally recognised professional qualifications. Since then, SEGi has experienced significant growth by adapting and catering to an increasing demand for tertiary education and professional qualifications in Malaysia. Known as one of the largest private higher education providers in Malaysia, SEGi now serves 25,000 students in five major campuses located in Kota Damansara, Kuala Lumpur, Subang Jaya, Penang and Sarawak. Today, the significance of climbing the career ladder in the industry is highly competitive, therefore SEGi now offers a new breakthrough method known as PACE or Professional and Continuing Education. SEGi PACE enables working adults to upgrade their qualification level whilst accommodating their work schedule, hence fulfilling work-life balance.\r\n\r\n'),
 (6, 'MSU College', '8', '9', '8', '8', '8', 'Through its ten branches across the country, MSU College emphasis in two main areas which are School of Science & Technology (SST) and School of Hospitality'),
-(11, 'KDU KPU', '4', '6', '3', '3', '4', 'HIHFDGIFDIOG');
+(11, 'KDU KPU', '4', '6', '3', '3', '4', 'HIHFDGIFDIOG'),
+(12, 'A New College', '8', '6', '9', '6', '6', '');
 
 -- --------------------------------------------------------
 
@@ -160,26 +138,8 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`review_id`, `page_id`, `name`, `content`, `rating`, `submit_date`) VALUES
-(1, 1, 'Max', 'I use this website daily to check on college rankings', 5, '2020-01-09 20:43:02'),
-(2, 1, 'Andrea', 'Great website, its pretty user friendly', 4, '2020-01-09 21:00:41'),
-(3, 1, 'Daniel', 'Website needs more content', 3, '2020-01-09 21:10:16'),
-(4, 1, 'Dhilen', 'Great!', 5, '2020-01-09 23:51:05'),
-(5, 1, 'Praga', 'Not much content.', 2, '2020-01-14 21:54:24'),
-(6, 1, 'Sarah Jane', 'Fantasic website, has everything I need to know.', 5, '2020-01-16 17:34:27'),
-(7, 1, 'Vishnu', 'Really like this website, helps me out a lot!', 5, '2020-01-16 17:35:12'),
-(8, 1, 'Damien Tan', 'Please provide more quality content, I suggest having lesser and more minimalistic design for the web', 5, '2020-01-16 17:36:03'),
-(9, 1, 'Wilfred Shea\r\n', 'This is great!', 4, '2020-11-29 18:44:27'),
-(10, 1, 'Alys Devlin\r\n', 'Needs more content for ratings', 3, '2020-11-29 18:44:27'),
-(11, 1, 'Masuma Frye\r\n', 'This page needs more colour!', 3, '2020-11-29 18:48:20'),
-(12, 1, 'Eleasha Robinson\r\n', 'Thanks for making this! It helped me a lot.', 5, '2020-11-29 18:48:20'),
-(13, 1, 'Soren Austin\r\n', 'It would be great if this page had more colours.', 4, '2020-11-29 18:48:20'),
-(14, 1, 'Catrin Hawkins\r\n', 'This helped me a lot in deciding on my college!', 4, '2020-11-29 18:48:20'),
-(15, 1, 'Lucia Goodman\r\n', 'This page is awesome', 4, '2020-11-29 18:48:20'),
-(16, 1, 'Helen Lucero\r\n', 'Good page.', 3, '2020-11-29 18:48:20'),
-(17, 1, 'Tristan Snider\r\n', 'Great design! I love the colors.', 4, '2020-11-29 18:48:20'),
-(21, 1, 'Chupa Kol', 'I should have taught them how to properly module the code p_p', 3, '2020-11-30 20:18:49'),
-(22, 1, 'Kerp', 'I want to sleep', 1, '2020-11-30 22:24:19'),
-(23, 1, 'Mox', 'We haven\'t finished everything we wanted.sdkfnsdfnbsdujidsfjkdsjkdfsjkdfsjkdfjskjdfksjdksfjkdfsjdfsksdjfkdsfjksdfjkjsdfksdfjk', 1, '2020-11-30 22:24:53');
+(24, 1, 'Daniel', 'This college is great!', 5, '2021-10-11 11:03:49'),
+(25, 1, 'Not Daniel', 'This college is not great.', 1, '2021-10-11 11:04:14');
 
 -- --------------------------------------------------------
 
@@ -275,13 +235,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `colleges`
 --
 ALTER TABLE `colleges`
-  MODIFY `college_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `college_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `subjects`
