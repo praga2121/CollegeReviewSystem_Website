@@ -14,7 +14,7 @@ h1, h2, label, input, a{
 input[type='text'], input[type='password']{
   border: none;
   border-bottom: 3px solid;
-  width: 50%;
+  width: 100%;
   height: 5%;
 }
 select{
@@ -28,7 +28,7 @@ select{
 
 input[type="submit"]{
   background-color: #FFFFFF;
-  width: 150px;
+  width: 100%;
   height: 50px;
 }
 
@@ -43,6 +43,7 @@ input[type="submit"]{
   margin-top: 30px;
   text-align: left;
 }
+
 
 
 /*

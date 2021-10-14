@@ -20,7 +20,7 @@ if (isset($_POST['submitted'])) {
   echo '<html>';
   echo '<head>';
   echo '<title>Login | Admin Panel</title>';
-  echo '<link rel="stylesheet" href="../css/style-main.css"/>';
+  echo '<link rel="stylesheet" href="../../css/style-admin.css"/>';
   echo '<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
  ?>
@@ -37,15 +37,21 @@ if (isset($_POST['submitted'])) {
   echo '<div class="login-container">';
   echo '<div class="form">';
   echo '<h2>Please Login</h2>';
+
   echo '<form action="login.php" method="POST">';
   if (strpos($actual_link, "error=true") == true) {
     echo '<span class = "error" style="color: red;">Wrong email or password</span>';
   }
   echo '<br/>';
   echo '<br/>';
-    echo '  <p><input type="text" name="email" value="" placeholder="Username or Email"></p>';
- echo '   <p><input type="password" name="password" value="" placeholder="Password"></p>';
-  echo '  <p class="submit"><input type="submit" name="Submit" value="Submit"></p>';
+  echo '<label for="email"><b>Email</b></label>';
+  echo '  <p><input type="text" name="email" value="" placeholder="Enter Email"></p>';
+
+  echo '<label for="password"><b>Password</b></label>';
+  echo '  <p><input type="password" name="password" value="" placeholder="Enter Password"></p>';
+  
+  echo '  <p class="submit"><input type="submit" name="Submit" value="Log-In"></p>';
+
   echo '<input type=\'hidden\' name=\'submitted\' value=\'true\'/>';
   echo '</form>';
   echo '</div>';
