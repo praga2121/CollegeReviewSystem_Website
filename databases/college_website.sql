@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2021 at 02:48 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Oct 19, 2021 at 11:44 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,17 +44,6 @@ INSERT INTO `admin` (`admin_id`, `name`, `email`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `collegeandreviews`
---
-
-CREATE TABLE `collegeandreviews` (
-  `college_id` int(11) NOT NULL,
-  `review_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `colleges`
 --
 
@@ -62,10 +51,6 @@ CREATE TABLE `colleges` (
   `college_id` int(10) NOT NULL,
   `name` varchar(100) NOT NULL,
   `overall` varchar(100) NOT NULL,
-  `teachingperformance` varchar(100) NOT NULL,
-  `facilities` varchar(100) NOT NULL,
-  `price` varchar(100) NOT NULL,
-  `academicreputation` varchar(100) NOT NULL,
   `college_description` varchar(5000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -73,15 +58,15 @@ CREATE TABLE `colleges` (
 -- Dumping data for table `colleges`
 --
 
-INSERT INTO `colleges` (`college_id`, `name`, `overall`, `teachingperformance`, `facilities`, `price`, `academicreputation`, `college_description`) VALUES
-(1, 'INTI International College', '3', '8', '9', '3', '8', 'MAYBE INTI MAYBE WQORKS'),
-(2, 'KDU College', '7', '7', '6', '7', '8', 'UOW Malaysia KDU is a part of the University of Wollongong Australia\'s global network and is one of the top universities in the world.\r\n'),
-(3, 'DISTED College', '8', '8', '7', '8', '7', 'DISTED College, one of the best private colleges in Penang Malaysia, offering higher education courses and programmes including pre-university and diploma'),
-(4, 'Sentral College', '7', '7', '7', '7', '8', 'SENTRAL College Penang serves to provide excellent and honest tertiary education to students through our various programmes.'),
-(5, 'SEGi College', '9', '9', '9', '9', '10', 'SEGi University and Colleges first opened its doors as Systematic College in 1977 in the heart of Kuala Lumpur’s commercial district, offering globally recognised professional qualifications. Since then, SEGi has experienced significant growth by adapting and catering to an increasing demand for tertiary education and professional qualifications in Malaysia. Known as one of the largest private higher education providers in Malaysia, SEGi now serves 25,000 students in five major campuses located in Kota Damansara, Kuala Lumpur, Subang Jaya, Penang and Sarawak. Today, the significance of climbing the career ladder in the industry is highly competitive, therefore SEGi now offers a new breakthrough method known as PACE or Professional and Continuing Education. SEGi PACE enables working adults to upgrade their qualification level whilst accommodating their work schedule, hence fulfilling work-life balance.\r\n\r\n'),
-(6, 'MSU College', '8', '9', '8', '8', '8', 'Through its ten branches across the country, MSU College emphasis in two main areas which are School of Science & Technology (SST) and School of Hospitality'),
-(11, 'KDU KPU', '4', '6', '3', '3', '4', 'HIHFDGIFDIOG'),
-(12, 'A New College', '8', '6', '9', '6', '6', '');
+INSERT INTO `colleges` (`college_id`, `name`, `overall`, `college_description`) VALUES
+(1, 'INTI International College', '3', 'MAYBE INTI MAYBE WQORKS'),
+(2, 'KDU College', '7', 'UOW Malaysia KDU is a part of the University of Wollongong Australia\'s global network and is one of the top universities in the world.\r\n'),
+(3, 'DISTED College', '8', 'DISTED College, one of the best private colleges in Penang Malaysia, offering higher education courses and programmes including pre-university and diploma'),
+(4, 'Sentral College', '7', 'SENTRAL College Penang serves to provide excellent and honest tertiary education to students through our various programmes.'),
+(5, 'SEGi College', '9', 'SEGi University and Colleges first opened its doors as Systematic College in 1977 in the heart of Kuala Lumpur’s commercial district, offering globally recognised professional qualifications. Since then, SEGi has experienced significant growth by adapting and catering to an increasing demand for tertiary education and professional qualifications in Malaysia. Known as one of the largest private higher education providers in Malaysia, SEGi now serves 25,000 students in five major campuses located in Kota Damansara, Kuala Lumpur, Subang Jaya, Penang and Sarawak. Today, the significance of climbing the career ladder in the industry is highly competitive, therefore SEGi now offers a new breakthrough method known as PACE or Professional and Continuing Education. SEGi PACE enables working adults to upgrade their qualification level whilst accommodating their work schedule, hence fulfilling work-life balance.\r\n\r\n'),
+(6, 'MSU College', '8', 'Through its ten branches across the country, MSU College emphasis in two main areas which are School of Science & Technology (SST) and School of Hospitality'),
+(11, 'KDU KPU', '4', 'HIHFDGIFDIOG'),
+(12, 'A New College', '8', '');
 
 -- --------------------------------------------------------
 
@@ -126,6 +111,7 @@ INSERT INTO `collegesandsubjects` (`college_id`, `subject_id`) VALUES
 
 CREATE TABLE `reviews` (
   `review_id` int(11) NOT NULL,
+  `college_id` int(10) NOT NULL,
   `page_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `content` text NOT NULL,
@@ -137,9 +123,18 @@ CREATE TABLE `reviews` (
 -- Dumping data for table `reviews`
 --
 
-INSERT INTO `reviews` (`review_id`, `page_id`, `name`, `content`, `rating`, `submit_date`) VALUES
-(24, 1, 'Daniel', 'This college is great!', 5, '2021-10-11 11:03:49'),
-(25, 1, 'Not Daniel', 'This college is not great.', 1, '2021-10-11 11:04:14');
+INSERT INTO `reviews` (`review_id`, `college_id`, `page_id`, `name`, `content`, `rating`, `submit_date`) VALUES
+(24, 1, 1, 'Daniel', 'This college is great!', 5, '2021-10-17 15:06:33'),
+(25, 1, 1, 'Not Daniel', 'This college is not great.', 1, '2021-10-17 15:06:37'),
+(26, 2, 1, 'Student', '345-34jffd dfg', 4, '2021-10-17 15:06:39'),
+(27, 1, 1, 'tset', 'fgvbhnmryh', 3, '2021-10-17 15:06:41'),
+(28, 3, 1, 'Student', 'sdf', 4, '2021-10-17 15:06:43'),
+(31, 3, 1, 'kek', 'This college is not great.', 3, '2021-10-17 17:31:22'),
+(32, 3, 1, 'Kek2', 'This code is annoying', 2, '2021-10-17 17:36:44'),
+(33, 3, 1, 'Akali', 'Where is ma crits', 1, '2021-10-17 17:40:56'),
+(34, 3, 1, 'Akali2', 'INSERT INTO college_website.reviews (college_id ,page_id, name, content, rating, submit_date) VALUES (3, 1, \"Kek2\", \"This code is annoying\", 2, CURRENT_TIME)', 3, '2021-10-17 17:55:20'),
+(35, 3, 1, 'kek_last', 'IS it working?', 5, '2021-10-17 18:02:37'),
+(36, 5, 1, 'Kek_Segi', 'Testing this stuff', 3, '2021-10-17 18:03:06');
 
 -- --------------------------------------------------------
 
@@ -150,34 +145,53 @@ INSERT INTO `reviews` (`review_id`, `page_id`, `name`, `content`, `rating`, `sub
 CREATE TABLE `subjects` (
   `subject_id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
-  `price` int(15) DEFAULT NULL,
-  `duration` varchar(100) DEFAULT NULL,
-  `internship_duration` varchar(100) DEFAULT NULL
+  `price` int(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`subject_id`, `name`, `price`, `duration`, `internship_duration`) VALUES
-(1, 'IT', 45000, '2 Years', '3 Months'),
-(2, 'Business', 45000, '2 Years', '3 Months'),
-(3, 'Engineering', 45000, '2 Years', '3 Months'),
-(4, 'IT', 45000, '2 Years', '3 Months'),
-(5, 'Business', 45000, '2 Years', '3 Months'),
-(6, 'Engineering', 45000, '2 Years', ' 3 Months'),
-(7, 'IT', 45000, '2 Years', '3 Months'),
-(8, 'Business', 45000, '2 Years', '3 Months'),
-(9, 'Engineering', 45000, '2 Years', '3 Months'),
-(10, 'IT', 45000, '2 Years', '3 Months'),
-(11, 'Business', 45000, '2 Years', '3 Months'),
-(12, 'Engineering', 45000, '2 Years', '3 Months'),
-(13, 'IT', 45000, '2 Years', '3 Months'),
-(14, 'Business', 45000, '2 Years', '3 Months'),
-(15, 'Engineering', 45000, '2 Years', '3 Months'),
-(16, 'IT', 45000, '2 Years', '3 Months'),
-(17, 'Business', 45000, '2 Years', '3 Months'),
-(18, 'Engineering', 45000, '2 Years', '3 Months');
+INSERT INTO `subjects` (`subject_id`, `name`, `price`) VALUES
+(1, 'IT', 45000),
+(2, 'Business', 45000),
+(3, 'Engineering', 45000),
+(4, 'IT', 45000),
+(5, 'Business', 45000),
+(6, 'Engineering', 45000),
+(7, 'IT', 45000),
+(8, 'Business', 45000),
+(9, 'Engineering', 45000),
+(10, 'IT', 45000),
+(11, 'Business', 45000),
+(12, 'Engineering', 45000),
+(13, 'IT', 45000),
+(14, 'Business', 45000),
+(15, 'Engineering', 45000),
+(16, 'IT', 45000),
+(17, 'Business', 45000),
+(18, 'Engineering', 45000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject_enum`
+--
+
+CREATE TABLE `subject_enum` (
+  `subject` enum('Diploma in Computer Science','Diploma in Mechanical Engineering','Diploma in Electrical Engineering','Diploma in Business','Diploma In Finance') NOT NULL DEFAULT 'Diploma in Computer Science'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subject_enum`
+--
+
+INSERT INTO `subject_enum` (`subject`) VALUES
+('Diploma in Computer Science'),
+('Diploma in Mechanical Engineering'),
+('Diploma in Electrical Engineering'),
+('Diploma in Business'),
+('Diploma In Finance');
 
 --
 -- Indexes for dumped tables
@@ -188,13 +202,6 @@ INSERT INTO `subjects` (`subject_id`, `name`, `price`, `duration`, `internship_d
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
-
---
--- Indexes for table `collegeandreviews`
---
-ALTER TABLE `collegeandreviews`
-  ADD PRIMARY KEY (`college_id`,`review_id`),
-  ADD KEY `review_id` (`review_id`);
 
 --
 -- Indexes for table `colleges`
@@ -213,7 +220,8 @@ ALTER TABLE `collegesandsubjects`
 -- Indexes for table `reviews`
 --
 ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`review_id`);
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `college_id` (`college_id`);
 
 --
 -- Indexes for table `subjects`
@@ -241,7 +249,7 @@ ALTER TABLE `colleges`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `subjects`
@@ -254,18 +262,17 @@ ALTER TABLE `subjects`
 --
 
 --
--- Constraints for table `collegeandreviews`
---
-ALTER TABLE `collegeandreviews`
-  ADD CONSTRAINT `collegeandreviews_ibfk_1` FOREIGN KEY (`review_id`) REFERENCES `reviews` (`review_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `collegeandreviews_ibfk_2` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`college_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `collegesandsubjects`
 --
 ALTER TABLE `collegesandsubjects`
   ADD CONSTRAINT `collegesandsubjects_ibfk_1` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`),
   ADD CONSTRAINT `collegesandsubjects_ibfk_2` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`college_id`);
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`college_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
