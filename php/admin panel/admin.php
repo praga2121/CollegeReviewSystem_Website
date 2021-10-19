@@ -1,6 +1,8 @@
 <?php
 require '../config.php';
 
+include '../support elements/nav_wide.php';
+
 if (isset($_POST['added'])) {
     $collegename = $_POST["collegename"];
     $overall = $_POST["overall"];

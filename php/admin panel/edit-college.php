@@ -1,6 +1,5 @@
 <?php
 require '../config.php';
-
 if (isset($_POST['edited'])) {
 
     $collegename = $_POST["collegename"];

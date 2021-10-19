@@ -5,6 +5,8 @@
 //$DATABASE_PASS = '';
 //$DATABASE_NAME = 'phpreviews';
 require '../config.php';
+$college_id = $_GET['college_id'];
+$page_id = 1;
 try {
     $pdo = new PDO('mysql:host=' . $dbServername . ';dbname=' . $dbName . ';charset=utf8', $dbUsername);
 } catch (PDOException $exception) {
@@ -34,20 +36,21 @@ function time_elapsed_string($datetime, $full = false)
 }
 
 // Page ID needs to exist, this is used to determine which reviews are for which page.
-if (isset($_GET['page_id'])) {
+if (isset($page_id)) {
     if (isset($_POST['name'], $_POST['rating'], $_POST['content'])) {
         // Insert a new review (user submitted form)
-        $stmt = $pdo->prepare('INSERT INTO college_website.reviews (page_id, name, content, rating, submit_date) VALUES (?,?,?,?,NOW())');
-        $stmt->execute([$_GET['page_id'], $_POST['name'], $_POST['content'], $_POST['rating']]);
+        $stmt = $pdo->prepare('INSERT INTO college_website.reviews (college_id ,page_id, name, content, rating, submit_date) VALUES (?,?,?,?,?,NOW())');
+        $stmt->execute([$college_id, 1, $_POST['name'], $_POST['content'], $_POST['rating']]);
+        //$stmt->execute([$college_id,$_GET['page_id'], $_POST['name'], $_POST['content'], $_POST['rating']]);
         exit('Your review has been submitted!');
     }
     // Get all reviews by the Page ID ordered by the submit date
-    $stmt = $pdo->prepare('SELECT * FROM college_website.reviews WHERE page_id = ? ORDER BY submit_date DESC');
-    $stmt->execute([$_GET['page_id']]);
+    $stmt = $pdo->prepare('SELECT * FROM college_website.reviews WHERE college_id ='.$college_id.' ORDER BY submit_date DESC');
+    $stmt->execute();
     $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // Get the overall rating and total amount of reviews
-    $stmt = $pdo->prepare('SELECT AVG(rating) AS overall_rating, COUNT(*) AS total_reviews FROM college_website.reviews WHERE page_id = ?');
-    $stmt->execute([$_GET['page_id']]);
+    $stmt = $pdo->prepare('SELECT AVG(rating) AS overall_rating, COUNT(*) AS total_reviews FROM college_website.reviews WHERE college_id ='.$college_id.'');
+    $stmt->execute();
     $reviews_info = $stmt->fetch(PDO::FETCH_ASSOC);
 } else {
     exit('Please provide the page ID.');
@@ -64,6 +67,14 @@ if (isset($_GET['page_id'])) {
     <form>
         <input name="name" type="text" placeholder="Your Name" required>
         <input name="rating" type="number" min="1" max="5" placeholder="Rating (1-5)" required>
+        <?php
+        //<select name="subject">
+        //    <option value="Diploma in Computer Science">Diploma in Computer Science</option>
+        //    <option value="Diploma in Electrical Engineering">Diploma in Electrical Engineering</option>
+        //    <option value="Diploma in Mechanical Engineering">Diploma in Mechanical Engineering</option>
+        //    <option value="Diploma in Finance">Diploma in Finance</option>
+        //</select> 
+        ?>
         <textarea name="content" placeholder="Write your review here..." required></textarea>
         <button type="submit">Submit Review</button>
     </form>

@@ -3,7 +3,10 @@
 require 'config.php';
 /** @var TYPE_NAME $conn */
 
-$sql = "SELECT *  FROM college_website.colleges ORDER BY overall DESC, teachingperformance DESC, facilities DESC, price DESC, academicreputation DESC";
+$sql = 
+"SELECT *  
+FROM college_website.colleges 
+ORDER BY overall DESC";
 
 //associative array of "colleges' table
 $result = mysqli_query($conn, $sql);
@@ -44,22 +47,6 @@ echo '';
 echo '<main>';
 echo '<h1 class ="main-container-header">Top Colleges</h1>';
 
-/*  SEARCH BAR*/
-echo '<div class="search">';  
-echo '<input type="search" class="search-box" id="searchInput" onkeyup="tableSearch()" placeholder="Search Here" title="Enter a keyword or number">';
-echo '<span class="search-button">';
-echo '<span class="search-icon"></span>';
-echo '</span>';
-echo '</div>';
-
-
-/*SEARCH BAR SIMPLE*/
-/*
-// with search over the table items function
-echo '<input type="search" class="searchTerm" id="searchInput" 
-onkeyup="tableSearch()" placeholder="Search here" title="Enter a keyword or number">';
-*/
-/*SEARCH BAR - END*/
 /* TABLE with search and sort function*/
 echo '<table id="table-search" class="table-sort">';
 /* TABLE HEADINGs*/
@@ -68,10 +55,6 @@ echo '<tr>';
 echo '<th>Compare</th>';
 echo '<th>Name</th>';
 echo '<th>Overall</th>';
-echo '<th>Teaching Performance</th>';
-echo '<th>Facilities</th>';
-echo '<th>Price</th>';
-echo '<th>Academic Reputation</th>';
 echo '</tr>';
 echo '</thead>';
 /* TABLE HEADING - ENDs*/
@@ -86,26 +69,22 @@ if ($resultsCheck > 0) {
     echo "</label></td>";
     echo "<td><a class =\"table-row-link\" href=\"individual%20page/university.php?college_name=" . $row['name'] ."\"> " . $row['name'] . "</a></td>";
     echo "<td>" . $row['overall'] . "</td>";
-    echo "<td>" . $row['teachingperformance'] . "</td>";
-    echo "<td>" . $row['facilities'] . "</td>";
-    echo "<td>" . $row['price'] . "</td>";
-    echo "<td>" . $row['academicreputation'] . "</td>";
-    echo "</tr>";
-    //last line
   }
 }
 echo '</tbody>';
 echo '</table>';
-/*COMPARE POP-UP BUTTON*/
-echo '<div id="compare-btn" hidden>';
-echo '<input type="button" value="Compare">';
-echo '</div>';
-/*COMPARE POP-UP BUTTON - END*/
 
 echo '<div class="container-feedback">';
 echo '  <a class="skewBtn lorange" href="review/review_main.php">Give Feedback</a>';
 echo '</div>';
 
+/*SEARCH BAR SIMPLE*/
+/*
+// with search over the table items function
+echo '<input type="search" class="searchTerm" id="searchInput" 
+onkeyup="tableSearch()" placeholder="Search here" title="Enter a keyword or number">';
+*/
+/*SEARCH BAR - END*/
 echo '</main>';
 //include 'review/review_main.php';
 /*MAIN PAGE CONTAINER - END*/
@@ -113,15 +92,14 @@ echo '</main>';
 /* FOOTER */
 include 'support elements/footer.php';
 /* FOOTER - END*/
+?>
 
-/* SCRIPTS */
-echo '<script src="../js/tableSorter.js"></script>';
-echo '<script src="../js/tableSearch.js"> </script>';
-//echo '<script src="../js/compareButton.js"> </script>';
-echo '<script src="../js/checkBoxSelect.js"> </script>';
-echo '<script src="../js/searchBarToggle.js"></script>';
-/* SCRIPTS - END */
-echo '</body>';
-//BODY - END
-echo '</html>';
-echo '';
+<script src="../js/tableSorter.js"></script>
+<script src="../js/tableSearch.js"> </script>
+<script src="../js/checkBoxSelect.js"> </script>
+<script src="../js/searchBarToggle.js"></script>
+
+</body>
+ 
+</html>
+

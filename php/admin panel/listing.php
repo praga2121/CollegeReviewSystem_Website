@@ -1,5 +1,7 @@
 <?php
 require '../config.php';
+
+//include '../support elements/nav_wide.php';
 /** @var TYPE_NAME $conn */
 
 $sql = "SELECT * FROM college_website.colleges";
