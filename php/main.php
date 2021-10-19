@@ -6,7 +6,7 @@ require 'config.php';
 $sql = 
 "SELECT *  
 FROM college_website.colleges 
-ORDER BY overall DESC";
+ORDER BY overall_rating DESC";
 
 //associative array of "colleges' table
 $result = mysqli_query($conn, $sql);
@@ -68,7 +68,7 @@ if ($resultsCheck > 0) {
     echo "<span class=\"checkmark\"></span>";
     echo "</label></td>";
     echo "<td><a class =\"table-row-link\" href=\"individual%20page/university.php?college_name=" . $row['name'] ."\"> " . $row['name'] . "</a></td>";
-    echo "<td>" . $row['overall'] . "</td>";
+    echo "<td>" . $row['overall_rating'] . "</td>";
   }
 }
 echo '</tbody>';
@@ -93,6 +93,27 @@ echo '</main>';
 include 'support elements/footer.php';
 /* FOOTER - END*/
 ?>
+
+<!-- Tile Scheme-->
+<div class="tiles_wrapper">
+  <div class="tile">
+    <div class="left_side">
+      <div class="title"></div>
+      <div class="description"></div>
+      <div class="review_banner"></div>
+    </div>
+    <div class="right_side">
+      <div class="image_banner"></div>
+      <div class="rating_banner"></div>
+    </div>
+    <div class="bottom_banner">
+      <div class="words_near_link">
+        <a href="" class="college_url"></a>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script src="../js/tableSorter.js"></script>
 <script src="../js/tableSearch.js"> </script>
