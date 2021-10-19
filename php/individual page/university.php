@@ -122,5 +122,5 @@ if ($row_number > 0) {
 <?php include '../support elements/footer.php'; ?>
 
 <script></script>>
- </div>
+</div>
 </div>
