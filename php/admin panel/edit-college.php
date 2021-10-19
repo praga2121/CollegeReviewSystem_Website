@@ -1,13 +1,10 @@
 <?php
 require '../config.php';
+include '../support elements/admin-nav.php';
+
 if (isset($_POST['edited'])) {
 
     $collegename = $_POST["collegename"];
-    $overall = $_POST["overall"];
-    $performance = $_POST["performance"];
-    $facilities = $_POST["facilities"];
-    $price = $_POST["price"];
-    $academic = $_POST["academic"];
     $college_description = $_POST["college_description"];
     $id = $_POST["id"];
 
@@ -57,57 +54,7 @@ if (isset($_POST['edited'])) {
   echo '<input type="hidden" name="id" value="' . $results["college_id"] . '" />';
   echo '<label for="collegename">College Name: </label>';
   echo '<input type="text" name="collegename" id="collegename" value="' . $results["name"] . '"/>';
-  echo '<h2>Ratings</h2>';
-  echo '<label for="overall">Overall: </label>';
-  echo '<select name="overall" id="overall" value="' . $results["overall"] . '">';
-  for ($i = 1; $i < 11; $i++) {
-    if ($i == $results["overall"]) {
-      echo '<option selected>' . $i . '</option>';
-    } else {
-      echo '<option>' . $i . '</option>';
-    }
-  }
-  echo '</select>';
-  echo '<label for="performance">Performance: </label>';
-  echo '<select name="performance" id="performance">';
-  for ($i = 1; $i < 11; $i++) {
-    if ($i == $results["teachingperformance"]) {
-      echo '<option selected>' . $i . '</option>';
-    } else {
-      echo '<option>' . $i . '</option>';
-    }
-  }
-  echo '</select>';
-  echo '<label for="facilities">Facilities: </label>';
-  echo '<select name="facilities" id = "facilities">';
-  for ($i = 1; $i < 11; $i++) {
-    if ($i == $results["facilities"]) {
-      echo '<option selected>' . $i . '</option>';
-    } else {
-      echo '<option>' . $i . '</option>';
-    }
-  }
-  echo '</select>';
-  echo '<label for="price">Price: </label>';
-  echo '<select name="price">';
-  for ($i = 1; $i < 11; $i++) {
-    if ($i == $results["price"]) {
-      echo '<option selected>' . $i . '</option>';
-    } else {
-      echo '<option>' . $i . '</option>';
-    }
-  }
-  echo '</select>';
-  echo '<label for="academic">Academic: </label>';
-  echo '<select name="academic" id="academic">';
-  for ($i = 1; $i < 11; $i++) {
-    if ($i == $results["academicreputation"]) {
-      echo '<option selected>' . $i . '</option>';
-    } else {
-      echo '<option>' . $i . '</option>';
-    }
-  }
-  echo '</select>';
+  
   echo '<br/>';
   echo '<br/>';
   echo '<textarea rows="4" cols="50" name="college_description" id="college_description" form="edit-form" placeholder="Description"></textarea>';

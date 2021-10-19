@@ -37,7 +37,7 @@ include 'support elements/nav_wide.php';
 echo '<!--Featured image-->';
 echo '<div class="featured-container">';
 echo '<div class="overlay">';
-echo '<h1 class="top-intro-header">Discover Great Colleges</h1>';
+echo '<h1 class="top-intro-header">Discover Incredible Colleges</h1>';
 echo '</div>';
 echo '</div>';
 echo '';
@@ -46,6 +46,14 @@ echo '';
 /*MAIN PAGE CONTAINER*/
 echo '<main>';
 echo '<h1 class ="main-container-header">Top Colleges</h1>';
+
+echo '<div class="search">';  
+echo '<input type="search" class="search-box" id="searchInput" onkeyup="tableSearch()" placeholder="Search Here" title="Enter a keyword or number">';
+echo '<span class="search-button">';
+echo '<span class="search-icon"></span>';
+echo '</span>';
+echo '</div>';
+
 
 /* TABLE with search and sort function*/
 echo '<table id="table-search" class="table-sort">';
@@ -74,9 +82,7 @@ if ($resultsCheck > 0) {
 echo '</tbody>';
 echo '</table>';
 
-echo '<div class="container-feedback">';
-echo '  <a class="skewBtn lorange" href="review/review_main.php">Give Feedback</a>';
-echo '</div>';
+
 
 /*SEARCH BAR SIMPLE*/
 /*
@@ -121,6 +127,5 @@ include 'support elements/footer.php';
 <script src="../js/searchBarToggle.js"></script>
 
 </body>
- 
 </html>
 

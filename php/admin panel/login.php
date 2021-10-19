@@ -1,6 +1,6 @@
 <?php
 require '../config.php';
-include '../support elements/nav_wide.php';
+include '../support elements/admin-nav.php';
 
 if (isset($_POST['submitted'])) {
   $email = $_POST['email'];
@@ -23,15 +23,16 @@ if (isset($_POST['submitted'])) {
   echo '<link rel="stylesheet" href="../../css/style-admin.css"/>';
   echo '<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
- ?>
- <style>
-   .login-container{
-      display: flex;
-      justify-content: center; 
-      align-items: center;
-    }
-  </style>
- <?php 
+?>
+<style>
+.login-container{
+display: flex;
+justify-content: center; 
+align-items: center;
+}
+</style>
+<?php 
+
   echo '</head>';
   echo '<body>';
   echo '<div class="login-container">';
@@ -44,13 +45,14 @@ if (isset($_POST['submitted'])) {
   }
   echo '<br/>';
   echo '<br/>';
-  echo '<label for="email"><b>Email</b></label>';
-  echo '  <p><input type="text" name="email" value="" placeholder="Enter Email"></p>';
+  echo '<label for="email" class="email"><b>Email</b></label>';
+  echo '<p><input type="text" name="email" value="" placeholder="Enter Email"></p>';
 
-  echo '<label for="password"><b>Password</b></label>';
-  echo '  <p><input type="password" name="password" value="" placeholder="Enter Password"></p>';
+  echo '<label for="password" class="password"><b>Password</b></label>';
+  echo '<p><input type="password" name="password" value="" placeholder="Enter Password"></p>';
   
-  echo '  <p class="submit"><input type="submit" name="Submit" value="Log-In"></p>';
+  echo '<p class="submit"><input type="submit" name="Submit" value="Log-In"></p>';
+  
 
   echo '<input type=\'hidden\' name=\'submitted\' value=\'true\'/>';
   echo '</form>';

@@ -1,159 +1,94 @@
-.main-container{
-  margin-left: 5%;
-  margin-right: 50%;
-  padding: 70px;
-  width: 80%;
-  border-radius: 10px;
-  box-shadow: 0px 0px 50px #b8b8b8;
+* {
+  box-sizing: border-box;
 }
-
-h1, h2, label, input, a{
+body{
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 30px;
+  background-color: #333;
+}
+li {
+  display: inline;
+  margin-right: 50px;
+}
+a, h1,h2, th, td, h3, p{
+  font-family: 'Montserrat';
+}
+.email{
+  font-family: 'Montserrat';
+}
+.password{
   font-family: 'Montserrat';
 }
 
-input[type='text'], input[type='password']{
-  border: none;
-  border-bottom: 3px solid;
-  width: 100%;
-  height: 5%;
+h1{
+  font-size: 50px;
 }
-select{
-  border: none;
-  border-bottom: 3px solid;
-  width: 5%;
-  margin-right: 30px;
-  margin-left: 30px;
-  height: 5%;
+.top-intro-header{
+  margin-bottom: 100px;
+  padding-top: 250px;
+  padding-bottom: 250px;
+  color: #ffffff;
 }
-
-input[type="submit"]{
-  background-color: #FFFFFF;
-  width: 100%;
-  height: 50px;
+.main-container-header{
+  margin-top: 100px;
+  margin-bottom:100px;
 }
-
-.add-button{
-  border: 1px solid #d6d6d6;
-  color: #000000;
+a{
   text-decoration: none;
-  padding: 10px;
+  color: #ffffff;
+  font-size: 150%;
+}
+.add-button{
+  color: #333333;
+  margin-left: 1580px;
+}
+.edit-button{
+  color: #333333;
 }
 
-.listing{
-  margin-top: 30px;
-  text-align: left;
-}
-
-
-
-/*
-.login-container {
-  position: relative;
-  margin: 30px auto;
-  padding: 20px 20px 20px;
-  width: 310px;
-  background: white;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.login-container:before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  bottom: -8px;
-  left: -8px;
-  z-index: -1;
-  background: rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
-}
-
-.login-container h1 {
-  margin: -20px -20px 21px;
-  line-height: 40px;
-  font-size: 15px;
-  font-weight: bold;
-  color: #555;
+table{
+  width: 80%;
+  height: 60%;
+  margin: 20px auto 60px;
   text-align: center;
-  text-shadow: 0 1px white;
-  background: #f3f3f3;
-  border-bottom: 1px solid #cfcfcf;
-  border-radius: 3px 3px 0 0;
-
-  -webkit-box-shadow: 0 1px whitesmoke;
-  box-shadow: 0 1px whitesmoke;
+  border-collapse: collapse;
 }
-
-.login-container p {
-  margin: 20px 0 0;
+th{
+  background-color: #333333;
+  color:#eee;
 }
-
-.login-container p:first-child {
-  margin-top: 0;
+td{
+  width:1%;
 }
-
-.login-container input[type=text], .login input[type=password] {
-  width: 278px;
+tr{
+  transition: all .2s ease-in-out;
 }
-
-.login-container p.submit {
-  text-align: right;
+thead{
+  
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .1);
 }
-
-input {
-  font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
-  font-size: 14px;
+tbody tr:nth-child(n):hover {
+  background-color:#ddd;
+  transform: scale(1.02);
 }
-
-input[type=text], input[type=password] {
-  margin: 5px;
-  padding: 0 10px;
-  width: 200px;
-  height: 34px;
-  color: #404040;
-  background: white;
-  border: 1px solid;
-  border-color: #c4c4c4 #d1d1d1 #d4d4d4;
-  border-radius: 2px;
-  outline: 5px solid #eff4f7;
-  -moz-outline-radius: 3px;
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+.selected-row{
+  background-color:rgb(230, 230, 230);
+  transform:scale(1.02);
 }
-
-input[type=text]:focus, input[type=password]:focus {
-  border-color: #7dc9e2;
-  outline-color: #dceefc;
-  outline-offset: 0;
+.table-row-link{
+  font-size: inherit;
+  color:inherit;
 }
-
-input[type=submit] {
-  padding: 0 18px;
-  height: 29px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #527881;
-  text-shadow: 0 1px #e3f1f1;
-  background: #cde5ef;
-  border: 1px solid;
-  border-color: #b4ccce #b3c0c8 #9eb9c2;
-  border-radius: 16px;
-  outline: 0;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-
-  -webkit-box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.15);
+footer{
+  background-color: #333;
+  margin-bottom:-30px;
 }
-
-input[type=submit]:active {
-  background: #cde5ef;
-  border-color: #9eb9c2 #b3c0c8 #b4ccce;
-  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+.overlay{
+  height: 600px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
-
-*/

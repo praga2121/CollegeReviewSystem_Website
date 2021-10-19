@@ -1,7 +1,7 @@
 <?php
 require '../config.php';
+include '../support elements/admin-nav.php';
 
-//include '../support elements/nav_wide.php';
 /** @var TYPE_NAME $conn */
 
 $sql = "SELECT * FROM college_website.colleges";
@@ -32,8 +32,9 @@ if (isset($_POST['added'])) {
   echo '</head>';
   echo '<body>';
   echo '<div class="main-container">';
-  echo '<h1>Colleges List</h1>';
-  echo '<a class = "add-button" href="admin.php">Add new college</a>';
+  echo '<h1 align="center">College List</h1>';
+  echo '<a class = "add-button" href="admin.php" >Add College</a>';
+
   echo '<table class="listing" width="500">';
   echo '<tr>';
   echo '<th>Name</th>';
@@ -41,7 +42,7 @@ if (isset($_POST['added'])) {
   echo '</tr>';
   if ($resultsCheck > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-      echo "<tr><td>" . $row['name'] . "</td><td><a href='edit-college.php?id=$row[college_id]'>Edit</a></td></tr>";
+      echo "<tr><td>" . $row['name'] . "</td><td><a class='edit-button' href='edit-college.php?id=$row[college_id]'>Edit</a></td></tr>";
       //last line
     }
   }
