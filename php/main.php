@@ -46,7 +46,6 @@ echo '';
 /*MAIN PAGE CONTAINER*/
 echo '<main>';
 echo '<h1 class ="main-container-header">Top Colleges</h1>';
-
 echo '<div class="search">';  
 echo '<input type="search" class="search-box" id="searchInput" onkeyup="tableSearch()" placeholder="Search Here" title="Enter a keyword or number">';
 echo '<span class="search-button">';

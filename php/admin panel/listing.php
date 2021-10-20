@@ -32,13 +32,13 @@ if (isset($_POST['added'])) {
   echo '</head>';
   echo '<body>';
   echo '<div class="main-container">';
-  echo '<h1 align="center">College List</h1>';
+  echo '<h1 align="center">Admin Dashboard</h1>';
   echo '<a class = "add-button" href="admin.php" >Add College</a>';
 
   echo '<table class="listing" width="500">';
   echo '<tr>';
   echo '<th>Name</th>';
-  echo '<th>Action</th>';
+  echo '<th colspan="2">Action</th>';
   echo '</tr>';
   if ($resultsCheck > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
