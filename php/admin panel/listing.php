@@ -38,7 +38,7 @@ if (isset($_POST['added'])) {
   echo '<table class="listing" width="500">';
   echo '<tr>';
   echo '<th>Name</th>';
-  echo '<th>Action</th>';
+  echo '<th colspan="2">Action</th>';
   echo '</tr>';
   if ($resultsCheck > 0) {
     while ($row = mysqli_fetch_assoc($result)) {

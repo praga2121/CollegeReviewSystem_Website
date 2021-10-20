@@ -1,6 +1,6 @@
 <?php
 require '../config.php';
-include '../support elements/admin-nav.php';
+include '../support elements/nav_wide.php';
 
 if (isset($_POST['submitted'])) {
   $email = $_POST['email'];
