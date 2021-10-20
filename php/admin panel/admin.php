@@ -8,8 +8,11 @@ if (isset($_POST['added'])) {
     $college_description = $_POST["college_description"];
 
 
-  if (!empty($collegename) && !empty($overall) && !empty($performance) && !empty($facilities) && !empty($price) && !empty($academic)) {
-    $query = "INSERT INTO colleges (name, overall, teachingperformance, facilities, price, academicreputation, college_description) VALUES ('$collegename', '$overall', '$performance', '$facilities', '$price', '$academic', '$college_description')";
+  if (!empty($collegename)) {
+    $query = "INSERT INTO 
+    colleges (name) 
+    VALUES ('$collegename')";
+
     if (@mysqli_query($conn, $query)) {
       echo '<!DOCUMENT html>';
       echo '<html>';
@@ -31,32 +34,44 @@ if (isset($_POST['added'])) {
     }
   }
 } else {
-  echo '<!DOCUMENT html>';
-  echo '<html>';
-  echo '<head>';
-  echo '<title>Add College | Admin Panel</title>';
-  echo '<link rel="stylesheet" href="../../css/style-admin.css">';
-  echo '<link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
-  echo '</head>';
-  echo '<body>';
-  echo '<div class="main-container">';
-  echo '<h1 align="center">New College</h1>';
-  echo '<div class="form-center">';
-  echo '<form action = "admin.php" method="POST">';
-  echo '<label for="collegename">College Name: </label>';
-  echo '<input type="text" name="collegename" id="collegename"/>';
-  echo '<br/>';
-  echo '<br/>';
-  echo '<textarea rows="4" cols="50" name="college_description" id="college_description" form="edit-form" placeholder="Description"></textarea>';
-  echo '<br/>';
-  echo '<br/>';
-  echo '<br/>';
-  echo '<input class="edit-button" type="submit" name="submit" value="Add college"/>';
-  echo '<input type=\'hidden\' name=\'added\' value=\'true\'/>';
-  echo '</div>';
-  echo '</form>';
-  echo '</div>';
-  echo '</body>';
-  echo '</html>';
+
+  ?>
+  <!DOCUMENT html>
+  <html>
+
+    <head>
+    	<title>Add College | Admin Panel</title>
+    	<link rel="stylesheet" href="../../css/style-admin.css" />
+    	<link rel="preconnect" href="https://fonts.gstatic.com" />
+    	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat%26display=swap" /> 
+    </head>
+
+    <body>
+    	<div class="main-container">
+    		<h1 align="center">New College</h1>
+    		<div class="form-center">
+    			<form action="admin.php" method="POST">
+    				<label for="collegename">College Name: </label>
+    				<input type="text" name="collegename" id="collegename" />
+    				<br/>
+    				<br/>
+    				<textarea rows="4" cols="50" name="college_description" id="college_description" form="edit-form" placeholder="Description"></textarea>
+    				<br/>
+    				<br/>
+    				<select name="subject"> </select>
+    				<br/>
+            <select name="subject">
+            <?php foreach ($subjects as $subject) : ?>
+              <option value="<?=$subject["subject_id"]?>"><?= $subject["name"] ?></option>
+            <?php endforeach ?>
+            </select> 
+            <input class="edit-button" type="submit" name="submit" value="Add college" />
+    				<input type='hidden' name='added' value='true' /> </form>
+    		</div>
+    	</div>
+    </body>
+
+</html>
+  <?php
 }
+?>

@@ -61,7 +61,7 @@ if (isset($page_id)) {
 $sql_subjets = $pdo->prepare("SELECT `subjects`.`name`, `subjects`.`subject_id`
 FROM `collegesandsubjects` 
 LEFT JOIN `subjects` ON `collegesandsubjects`.`subject_id` = `subjects`.`subject_id` 
-WHERE `collegesandsubjects`.`college_id` = '1' AND `subjects`.`subject_id` = `collegesandsubjects`.`subject_id`");
+WHERE `collegesandsubjects`.`college_id` = '.$college_id.' AND `subjects`.`subject_id` = `collegesandsubjects`.`subject_id`");
 $sql_subjets->execute();
 
 $subjects = $sql_subjets->fetchAll(PDO::FETCH_ASSOC);

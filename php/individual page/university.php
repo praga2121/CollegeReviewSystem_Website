@@ -57,10 +57,10 @@ echo '<div class="subject-container">';
 echo '<h2 class="subject-header">Subjects</h2>';
 
 $sql_subject = 
-"SELECT `subjects`.`name`
+"SELECT `subjects`.`name`, `price`
 FROM `collegesandsubjects` 
 LEFT JOIN `subjects` ON `collegesandsubjects`.`subject_id` = `subjects`.`subject_id` 
-WHERE `collegesandsubjects`.`college_id` = '1' AND `subjects`.`subject_id` = `collegesandsubjects`.`subject_id` 
+WHERE `collegesandsubjects`.`college_id` = '.$college_id.' AND `subjects`.`subject_id` = `collegesandsubjects`.`subject_id` 
 ";
 
 $result_subject = mysqli_query($conn, $sql_subject);
@@ -76,7 +76,7 @@ if ($row_number > 0) {
         echo '</tr>';
 
         echo '<tr>';
-        echo '    <td> NO price lmao</td>';
+        echo '    <td>'. $row_subject["price"].'</td>';
         echo '</tr>';
         echo '</table>';
     }
