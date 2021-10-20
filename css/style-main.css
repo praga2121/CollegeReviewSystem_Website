@@ -47,9 +47,8 @@ table{
   text-align: center;
   border-collapse: collapse;
 }
-
 th{
-  background-color: #ebbc3d;
+  background-color: #FFCE2F;
 }
 
 td{
@@ -57,17 +56,9 @@ td{
 }
 tr{
   transition: all .2s ease-in-out;
-  /*border-top: 0.5px solid rgba(177, 177, 177, 0.568);*/
-}/*
-tr:last-child{
-  border-bottom: 0.5px solid rgba(177, 177, 177, 0.568);
-}*/
-/*tr:nth-child(even){background-color: #f7f7f7;}*/
+}
 
 thead{
-  /*display:block or display:flex needs to be used to be able to set up the height and max-height
-  too much hustle;
-  */
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .1);
 }
 tbody tr:nth-child(n):hover {
@@ -93,7 +84,7 @@ footer{
 }
 .featured-container{
   margin-top: -35px;
-  background-image: url("../images/featured-home.jpg");
+  background-image: url("../images/featured-home2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
@@ -174,7 +165,7 @@ main{
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #ebbc3d;
+  background-color: #FFCE2F;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -211,7 +202,7 @@ input:checked td{
   width: 100px;
   height: 100px;
   margin: 40px auto 0;
-  background-color: #fff;
+  background-color: #ffffff;
   position: relative;
   overflow: hidden;
   transition: all 0.5s ease;
@@ -223,7 +214,7 @@ input:checked td{
   width: 3px;
   height: 100%;
   position: relative;
-  background-color: #ebbc3d;
+  background-color: #FFCE2F;
   transition: all 0.5s ease;
 }
 .search.open {
@@ -261,7 +252,7 @@ input:checked td{
   width: 40px;
   height: 40px;
   border-radius: 40px;
-  border: 3px solid #ebbc3d;
+  border: 3px solid #FFCE2F;
   display: block;
   position: relative;
   margin-left: 5px;
@@ -275,7 +266,7 @@ input:checked td{
   right: -2px;
   top: 30px;
   display: block;
-  background-color: #ebbc3d;
+  background-color: #FFCE2F;
   transform: rotate(-45deg);
   transition: all 0.5s ease;
 }
@@ -287,7 +278,7 @@ input:checked td{
   right: -12px;
   top: 40px;
   display: block;
-  background-color: #ebbc3d;
+  background-color: #FFCE2F;
   transform: rotate(-45deg);
   transition: all 0.5s ease;
 }
@@ -313,7 +304,7 @@ input:checked td{
 /**/
 .searchTerm {
   width: 300px;
-  border: 3px solid #ebbc3d;
+  border: 3px solid #FFCE2F;
   font-size:1.5em;
   /*border-right: none;*/
   padding: 5px;
@@ -324,7 +315,7 @@ input:checked td{
 }
 
 .searchTerm:focus{
-  color: #ebbc3d;
+  color: #FFCE2F;
 }
 
 /*COMPARE BUTTON UNDER THE TABLE*/
@@ -333,7 +324,7 @@ input:checked td{
   font-weight: 400;
   letter-spacing: 1px;
   width: 520px;
-  background-color: #ebbc3d;
+  background-color: #FFCE2F;
   border: none;
   color: #fff;
   padding: 18px;
@@ -410,8 +401,6 @@ padding-top: 20px;
 #compare-btn input:active {
   background-color: #cfa224;
 }
-.google-maps {
-               width:100%;
-}
+
 /*COMPARE BUTTON UNDER THE TABLE -END*/
 

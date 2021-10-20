@@ -20,7 +20,7 @@ echo '<html>';
 echo '<head>';
 echo '<meta charset="UTF-8">';
 echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
-echo '<title>ReviewMyCollege</title>';
+echo '<title>CollegeReport</title>';
 echo '<link rel="stylesheet" href="../css/style-main.css"/>';
 echo '<link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
 
@@ -46,7 +46,6 @@ echo '';
 /*MAIN PAGE CONTAINER*/
 echo '<main>';
 echo '<h1 class ="main-container-header">Top Colleges</h1>';
-
 echo '<div class="search">';  
 echo '<input type="search" class="search-box" id="searchInput" onkeyup="tableSearch()" placeholder="Search Here" title="Enter a keyword or number">';
 echo '<span class="search-button">';

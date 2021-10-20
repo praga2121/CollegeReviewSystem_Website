@@ -15,7 +15,7 @@ li {
   display: inline;
   margin-right: 50px;
 }
-a, h1,h2, th, td, h3, p{
+a, h1,h2, th, td, h3,input,label, p{
   font-family: 'Montserrat';
 }
 .email{
@@ -24,7 +24,10 @@ a, h1,h2, th, td, h3, p{
 .password{
   font-family: 'Montserrat';
 }
-
+.form-center {
+	display:flex;
+	justify-content: center;
+}
 h1{
   font-size: 50px;
 }
@@ -45,12 +48,25 @@ a{
 }
 .add-button{
   color: #333333;
-  margin-left: 1580px;
+  margin-left: 1555px;
+  border-style: solid;
+  padding: 10px;
 }
 .edit-button{
   color: #333333;
+  border-style: solid;
+  padding: 10px;
 }
-
+.save-button{
+  color:#333333;
+  border-style: solid;
+  padding: 10px;
+}
+.submit-button{
+  color:#333333;
+  border-style: solid;
+  padding: 10px;
+}
 table{
   width: 80%;
   height: 60%;

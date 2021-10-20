@@ -32,7 +32,6 @@ align-items: center;
 }
 </style>
 <?php 
-
   echo '</head>';
   echo '<body>';
   echo '<div class="login-container">';
@@ -51,7 +50,7 @@ align-items: center;
   echo '<label for="password" class="password"><b>Password</b></label>';
   echo '<p><input type="password" name="password" value="" placeholder="Enter Password"></p>';
   
-  echo '<p class="submit"><input type="submit" name="Submit" value="Log-In"></p>';
+  echo '<p class="submit.button"><input type="submit" name="Submit" value="Log-In"></p>';
   
 
   echo '<input type=\'hidden\' name=\'submitted\' value=\'true\'/>';

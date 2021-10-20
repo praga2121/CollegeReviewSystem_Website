@@ -16,7 +16,7 @@ $college_id = $row['college_id'];
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReviewMyCollege</title>
+<title>CollegeReport</title>
 <link rel="stylesheet" href="../../css/style-main.css"/>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <link href="../../css/reviews.css" rel="stylesheet" type="text/css">
@@ -51,8 +51,6 @@ echo '<div style="width: 100%">
         frameborder="0">
     </iframe>
 </div>';
-
-      
 
 //echo '<div class="w3-row-padding w3-center w3-padding-64" id="pricing">';
 echo '<div class="subject-container">';

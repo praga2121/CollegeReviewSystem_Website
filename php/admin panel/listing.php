@@ -32,7 +32,7 @@ if (isset($_POST['added'])) {
   echo '</head>';
   echo '<body>';
   echo '<div class="main-container">';
-  echo '<h1 align="center">College List</h1>';
+  echo '<h1 align="center">Admin Dashboard</h1>';
   echo '<a class = "add-button" href="admin.php" >Add College</a>';
 
   echo '<table class="listing" width="500">';
