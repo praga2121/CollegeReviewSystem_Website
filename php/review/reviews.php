@@ -1,9 +1,4 @@
 <?php
-// Update the details below with your MySQL details
-//$DATABASE_HOST = 'localhost';
-//$DATABASE_USER = 'root';
-//$DATABASE_PASS = '';
-//$DATABASE_NAME = 'phpreviews';
 require '../config.php';
 $college_id = $_GET['college_id'];
 $page_id = 1;
@@ -39,8 +34,15 @@ function time_elapsed_string($datetime, $full = false)
 if (isset($page_id)) {
     if (isset($_POST['name'], $_POST['rating'], $_POST['content'])) {
         // Insert a new review (user submitted form)
-        $stmt = $pdo->prepare('INSERT INTO college_website.reviews (college_id ,page_id, name, content, rating, submit_date) VALUES (?,?,?,?,?,NOW())');
-        $stmt->execute([$college_id, 1, $_POST['name'], $_POST['content'], $_POST['rating']]);
+        $stmt = $pdo->prepare('INSERT INTO college_website.reviews (college_id, subject_id, page_id, name, content, rating, submit_date) VALUES (?,?,?,?,?,?,NOW())');
+        $stmt->execute(
+            [$college_id, 
+            $_POST['subject'], 
+            1, 
+            $_POST['name'], 
+            $_POST['content'], 
+            $_POST['rating']]
+        );
         //$stmt->execute([$college_id,$_GET['page_id'], $_POST['name'], $_POST['content'], $_POST['rating']]);
         exit('Your review has been submitted!');
     }
@@ -55,6 +57,14 @@ if (isset($page_id)) {
 } else {
     exit('Please provide the page ID.');
 }
+
+$sql_subjets = $pdo->prepare("SELECT `subjects`.`name`, `subjects`.`subject_id`
+FROM `collegesandsubjects` 
+LEFT JOIN `subjects` ON `collegesandsubjects`.`subject_id` = `subjects`.`subject_id` 
+WHERE `collegesandsubjects`.`college_id` = '1' AND `subjects`.`subject_id` = `collegesandsubjects`.`subject_id`");
+$sql_subjets->execute();
+
+$subjects = $sql_subjets->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="overall_rating">
@@ -67,21 +77,22 @@ if (isset($page_id)) {
     <form>
         <input name="name" type="text" placeholder="Your Name" required>
         <input name="rating" type="number" min="1" max="5" placeholder="Rating (1-5)" required>
-        <?php
-        //<select name="subject">
-        //    <option value="Diploma in Computer Science">Diploma in Computer Science</option>
-        //    <option value="Diploma in Electrical Engineering">Diploma in Electrical Engineering</option>
-        //    <option value="Diploma in Mechanical Engineering">Diploma in Mechanical Engineering</option>
-        //    <option value="Diploma in Finance">Diploma in Finance</option>
-        //</select> 
-        ?>
+        <select name="subject">
+        <?php foreach ($subjects as $subject) : ?>
+            <option value="<?=$subject["subject_id"]?>"><?= $subject["name"] ?></option>
+        <?php endforeach ?>
+        </select> 
         <textarea name="content" placeholder="Write your review here..." required></textarea>
         <button type="submit">Submit Review</button>
     </form>
 </div>
 <?php foreach ($reviews as $review) : ?>
     <div class="review">
-        <h3 class="name"><?= htmlspecialchars($review['name'], ENT_QUOTES) ?></h3>
+        <?php
+
+        ?>
+        <h3 class="name"><?= htmlspecialchars($review['name'], ENT_QUOTES) ?> - <?= $subjects[$review["subject_id"]-1]["name"] ?></h3>
+       <!-- <h3>Diploma in Computer Science</h3> -->
         <div>
             <span class="rating"><?= str_repeat('&#9733;', $review['rating']) ?></span>
             <span class="date"><?= time_elapsed_string($review['submit_date']) ?></span>
