@@ -77,14 +77,17 @@ $subjects = $sql_subjets->fetchAll(PDO::FETCH_ASSOC);
     <form>
         <input name="name" type="text" placeholder="Your Name" required>
         <input name="rating" type="number" min="1" max="5" placeholder="Rating (1-5)" required>
-        <select name="subject">
+        
+        <select class="subject" name="subject">
         <?php foreach ($subjects as $subject) : ?>
             <option value="<?=$subject["subject_id"]?>"><?= $subject["name"] ?></option>
         <?php endforeach ?>
         </select> 
+
         <textarea name="content" placeholder="Write your review here..." required></textarea>
         <button type="submit">Submit Review</button>
     </form>
+    
 </div>
 <?php foreach ($reviews as $review) : ?>
     <div class="review">

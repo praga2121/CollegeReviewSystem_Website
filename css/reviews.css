@@ -42,7 +42,7 @@
 }
 .reviews .write_review input {
     display: block;
-    width: 250px;
+    width: 300px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -65,6 +65,13 @@
     letter-spacing: 2px;
     font-size: 22px;
     color: #F5A624;
+}
+select { 
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 .reviews .review .date {
     color: #777777;
