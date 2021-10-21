@@ -11,13 +11,9 @@ $resultsCheck = mysqli_num_rows($result);
 if (isset($_POST['added'])) {
     $collegename = $_POST["collegename"];
     $overall = $_POST["overall"];
-    $performance = $_POST["performance"];
-    $facilities = $_POST["facilities"];
-    $price = $_POST["price"];
-    $academic = $_POST["academic"];
     $college_description = $_POST["college_description"];
 
-  if (!empty($collegename) && !empty($overall) && !empty($performance) && !empty($facilities) && !empty($price) && !empty($academic) && !empty($college_description)) {
+  if (!empty($collegename) && !empty($overall) && !empty($college_description)) {
     $query = "INSERT INTO colleges (name, overall, teachingperformance, facilities, price, academicreputation, college_description) VALUES ('$collegename', '$overall', '$performance', '$facilities', '$price', '$academic', '$college_description')";
     if (@mysqli_query($conn, $query)) {
       print "Records added successfully";
@@ -42,12 +38,29 @@ if (isset($_POST['added'])) {
   echo '</tr>';
   if ($resultsCheck > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-      echo "<tr><td>" . $row['name'] . "</td><td><a class='edit-button' href='edit-college.php?id=$row[college_id]'>Edit</a></td></tr>";
-      //last line
+    ?>
+
+      <td><?= $row['name'] ?></td>
+      <td>
+        <div>
+          <a class='edit-button' href='edit-college.php?id=<?= $row['college_id']?>'>Edit</a>
+          <a 
+            class='edit-button' 
+            href='delete-college.php?id=<?= $row['college_id']?>'
+            onClick="return confirm('Are you sure you want to delete this item');">
+            Delete
+          </a>
+        </div>
+      </td>
+    </tr>
+    <?php
     }
   }
-  echo '</table>';
-  echo '</div>';
-  echo '</body>';
-  echo '</html>';
+  ?>
+  </table>
+  </div>
+  </body>
+  </html>
+  <?php
 }
+?>

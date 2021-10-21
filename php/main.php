@@ -70,10 +70,7 @@ echo '<tbody>';
 if ($resultsCheck > 0) {
   while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
-    echo "<td><label class=\"container\">";
-    echo '<input type="checkbox" class="compare-checkbox" id="' . $row['college_id'] . '" name="universityID" value=' . $row['college_id'] . '>';
-    echo "<span class=\"checkmark\"></span>";
-    echo "</label></td>";
+    
     echo "<td><a class =\"table-row-link\" href=\"individual%20page/university.php?college_name=" . $row['name'] ."\"> " . $row['name'] . "</a></td>";
     echo "<td>" . $row['overall_rating'] . "</td>";
   }
