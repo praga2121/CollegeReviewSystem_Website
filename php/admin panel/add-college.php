@@ -59,9 +59,6 @@ if (isset($_POST['added'])) {
       echo '<div class="main-container">';
       echo '<h1>Database Updated Successfully</h1>';
       
-      print_r($subjects);
-      print($subjects[1]["name"]);
-      print($subjects[1]["price"]);
       echo '<a href = "listing.php">Back to college listings</a>';
       echo '</div>';
       echo '</body>';
