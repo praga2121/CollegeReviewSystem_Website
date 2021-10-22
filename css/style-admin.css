@@ -15,8 +15,13 @@ li {
   display: inline;
   margin-right: 50px;
 }
-a, h1,h2, th, td, h3,input,label, p{
+a, h1,h2, th, td, h3,input, p{
   font-family: 'Montserrat';
+  
+}
+label{
+  font-family: 'Montserrat';
+  color: #000;;
 }
 .email{
   font-family: 'Montserrat';
@@ -30,6 +35,13 @@ a, h1,h2, th, td, h3,input,label, p{
 }
 h1{
   font-size: 50px;
+}
+div.fixed{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  border: 3px solid #73AD21;
 }
 .top-intro-header{
   margin-bottom: 100px;
@@ -48,7 +60,8 @@ a{
 }
 .add-button{
   color: #333333;
-  margin-left: 1555px;
+  position: sticky;
+  left: 1555px;
   border-style: solid;
   padding: 10px;
 }
@@ -64,6 +77,11 @@ a{
 }
 .submit-button{
   color:#333333;
+  border-style: solid;
+  padding: 10px;
+}
+.delete-button{
+  color: #c00000;
   border-style: solid;
   padding: 10px;
 }

@@ -45,7 +45,7 @@ if (isset($_POST['added'])) {
         <div>
           <a class='edit-button' href='edit-college.php?id=<?= $row['college_id']?>'>Edit</a>
           <a 
-            class='edit-button' 
+            class='delete-button' 
             href='delete-college.php?id=<?= $row['college_id']?>'
             onClick="return confirm('Are you sure you want to delete this item');">
             Delete
