@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2021 at 02:34 PM
+-- Generation Time: Oct 23, 2021 at 01:00 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.23
 
@@ -67,7 +67,7 @@ INSERT INTO `colleges` (`college_id`, `name`, `overall_rating`, `college_descrip
 (5, 'SEGi College', '9', 'SEGi University and Colleges first opened its doors as Systematic College in 1977 in the heart of Kuala Lumpur’s commercial district, offering globally recognised professional qualifications. Since then, SEGi has experienced significant growth by adapting and catering to an increasing demand for tertiary education and professional qualifications in Malaysia. Known as one of the largest private higher education providers in Malaysia, SEGi now serves 25,000 students in five major campuses located in Kota Damansara, Kuala Lumpur, Subang Jaya, Penang and Sarawak. Today, the significance of climbing the career ladder in the industry is highly competitive, therefore SEGi now offers a new breakthrough method known as PACE or Professional and Continuing Education. SEGi PACE enables working adults to upgrade their qualification level whilst accommodating their work schedule, hence fulfilling work-life balance.\r\n\r\n', ''),
 (6, 'MSU College', '8', 'Through its ten branches across the country, MSU College emphasis in two main areas which are School of Science & Technology (SST) and School of Hospitality', ''),
 (11, 'KDU KPU', '4', 'HIHFDGIFDIOG', ''),
-(12, 'A New College', '8', '', '');
+(37, 'Hopefully Last Test', '0', 'Horororororororororsho', '');
 
 -- --------------------------------------------------------
 
@@ -91,7 +91,10 @@ INSERT INTO `collegesandsubjects` (`college_id`, `subject_id`, `price`) VALUES
 (1, 3, 28800),
 (5, 1, 36000),
 (5, 2, 41000),
-(5, 3, 30800);
+(5, 3, 30800),
+(37, 1, 1500),
+(37, 3, 1100),
+(37, 4, 2500);
 
 -- --------------------------------------------------------
 
@@ -223,7 +226,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `colleges`
 --
 ALTER TABLE `colleges`
-  MODIFY `college_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `college_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `reviews`
