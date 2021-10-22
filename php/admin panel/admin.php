@@ -36,6 +36,7 @@ if (isset($_POST['added'])) {
 } else {
 
   ?>
+  
   <!DOCUMENT html>
   <html>
 

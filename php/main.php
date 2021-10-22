@@ -59,7 +59,6 @@ echo '<table id="table-search" class="table-sort">';
 /* TABLE HEADINGs*/
 echo '<thead>';
 echo '<tr>';
-echo '<th>Compare</th>';
 echo '<th>Name</th>';
 echo '<th>Overall</th>';
 echo '</tr>';

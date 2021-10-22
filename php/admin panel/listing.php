@@ -29,7 +29,7 @@ if (isset($_POST['added'])) {
   echo '<body>';
   echo '<div class="main-container">';
   echo '<h1 align="center">Admin Dashboard</h1>';
-  echo '<a class = "add-button" href="admin.php" >Add College</a>';
+  echo '<a class = "add-button" href="admin.php">Add College</a>';
 
   echo '<table class="listing" width="500">';
   echo '<tr>';
@@ -45,7 +45,7 @@ if (isset($_POST['added'])) {
         <div>
           <a class='edit-button' href='edit-college.php?id=<?= $row['college_id']?>'>Edit</a>
           <a 
-            class='edit-button' 
+            class='delete-button' 
             href='delete-college.php?id=<?= $row['college_id']?>'
             onClick="return confirm('Are you sure you want to delete this item');">
             Delete
