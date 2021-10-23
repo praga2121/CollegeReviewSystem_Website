@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2021 at 01:27 PM
+-- Generation Time: Oct 23, 2021 at 08:04 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.23
 
@@ -60,7 +60,7 @@ CREATE TABLE `colleges` (
 --
 
 INSERT INTO `colleges` (`college_id`, `name`, `overall_rating`, `college_description`, `url`) VALUES
-(1, 'INTI International College', '3.0', 'MAYBE INTI MAYBE WQORKS', ''),
+(1, 'INTI International College', '3.0', 'MAYBE INTI MAYBE WQORKS', 'https://testing/ur.com'),
 (2, 'KDU College', '4.0', 'UOW Malaysia KDU is a part of the University of Wollongong Australia\'s global network and is one of the top universities in the world.\r\n', ''),
 (3, 'DISTED College', '3.0', 'DISTED College, one of the best private colleges in Penang Malaysia, offering higher education courses and programmes including pre-university and diploma', ''),
 (4, 'Sentral College', '', 'SENTRAL College Penang serves to provide excellent and honest tertiary education to students through our various programmes.', ''),

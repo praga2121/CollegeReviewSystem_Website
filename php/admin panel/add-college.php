@@ -112,7 +112,7 @@ if (isset($_POST['added'])) {
                 <input type="checkbox" name="subject[<?= $increment?>][name]" value="<?= $subject["subject_id"]?>" />
                 <label for="subjects"><?= $subject["name"] ?></label>
 
-                <input type="number" name="subject[<?= $increment?>][price]" step="100" min="1" />
+                <input type="number" name="subject[<?= $increment?>][price]" min="1" disabled />
               </div>
             <?php
             $increment = $increment + 1; 
