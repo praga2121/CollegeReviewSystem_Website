@@ -12,16 +12,16 @@ try {
 
 if (isset($_POST['added'])) {
     $college_name = $_POST["name"];
-    $website_link = $_POST["websitelink"];
+    $url = $_POST["websitelink"];
     $college_description = $_POST["description"];
     $subjects = $_POST["subject"];
     $subjects = array_values(array_filter($subjects, 'array_filter'));
 
   if (!empty($college_name)) {
     $query_college = "INSERT INTO colleges 
-                      (name, college_description) 
+                      (name, college_description,url) 
                       VALUES (
-                        '$college_name', '$college_description'
+                        '$college_name', '$college_description','$url'
                       )";
     $query_subjects = "INSERT INTO collegesandsubjects 
                       (college_id, subject_id, price)
@@ -44,8 +44,7 @@ if (isset($_POST['added'])) {
         $subject["price"]
         )
       ); 
-     }
-     
+}
 
     if (/*@mysqli_query($conn, $query)*/ true) {
       echo '<!DOCUMENT html>';
@@ -53,13 +52,12 @@ if (isset($_POST['added'])) {
       echo '<head>';
       echo '<title>Success | Admin Panel</title>';
       echo '<link rel="stylesheet" href="../resources/style-admin.css">';
-      
+      echo '<link rel="preconnect" href="https://fonts.gstatic.com">';
+      echo '<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
       echo '</head>';
       echo '<body>';
       echo '<div class="main-container">';
-      echo '<h1>Database Updated Successfully</h1>';
-      
-      echo '<a href = "listing.php">Back to college listings</a>';
+      echo '<h1>Database Successfully Updated</h1>';
       echo '</div>';
       echo '</body>';
       echo '</html>';
@@ -75,12 +73,15 @@ if (isset($_POST['added'])) {
   ?>
   <!DOCUMENT html>
   <html>
-
+  
     <head>
     	<title>Add College | Admin Panel</title>
-    	<link rel="stylesheet" href="../../css/style-admin.css" />
+      <link rel="stylesheet" href="../../css/style-admin.css">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    	<!--<link rel="stylesheet" href="../../css/style-admin.css" />
     	<link rel="preconnect" href="https://fonts.gstatic.com" />
-    	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat%26display=swap" /> 
+    	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat%26display=swap" />-->
     </head>
 
     <body>

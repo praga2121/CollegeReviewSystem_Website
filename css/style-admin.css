@@ -21,7 +21,7 @@ a, h1,h2, th, td, h3,input, p{
 }
 label{
   font-family: 'Montserrat';
-  color: #000;;
+  color: #333;
 }
 .email{
   font-family: 'Montserrat';
@@ -36,13 +36,7 @@ label{
 h1{
   font-size: 50px;
 }
-div.fixed{
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 300px;
-  border: 3px solid #73AD21;
-}
+
 .top-intro-header{
   margin-bottom: 100px;
   padding-top: 250px;
@@ -58,17 +52,32 @@ a{
   color: #ffffff;
   font-size: 150%;
 }
+.black{
+  text-decoration: none;
+  color: #000;
+}
 .add-button{
   color: #333333;
-  position: sticky;
-  left: 1555px;
+  margin-right: 860px;
+  margin-left: 860px;
   border-style: solid;
   padding: 10px;
 }
+.container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 .edit-button{
   color: #333333;
-  border-style: solid;
-  padding: 10px;
+  margin-right: 100px;
 }
 .save-button{
   color:#333333;
@@ -82,8 +91,7 @@ a{
 }
 .delete-button{
   color: #c00000;
-  border-style: solid;
-  padding: 10px;
+  text-align: right;
 }
 table{
   width: 80%;

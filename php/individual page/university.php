@@ -4,7 +4,7 @@ require '../config.php';
 
 $college_name = $_GET['college_name'];
 
-$sql = 'SELECT college_id, name, college_description FROM college_website.colleges WHERE name="'.$college_name.'"';
+$sql = 'SELECT college_id, name, college_description, url FROM college_website.colleges WHERE name="'.$college_name.'"';
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
@@ -34,8 +34,10 @@ echo '<h1 style="padding-top: 250px; padding-bottom: 250px; color: #FFFFFF;">' .
 echo '  </div>';
 echo '</div>';
 echo '<main>';
+echo '<h2 class="subject-header">Official Link</h2>';
+echo '<a class="black">' . $row["url"] . '</a>';
 echo '<h2 class="subject-header">Description</h2>';
-echo '       <p class="college-description">' . $row["college_description"] . '</p>';
+echo '<p class="college-description">' . $row["college_description"] . '</p>';
 echo '<h2 class="subject-header">Location</h2>';
 // Map with Location
 // ISSUE FOUND: if google will provides more than one location with entered name, no result will be displayed on the map
@@ -85,7 +87,7 @@ if ($row_number > 0) {
 </div>
 </div>
 <div class="w3-container w3-padding-64 w3-theme-l5 w3-center" id="contact">
-  <div class="w3-padding-16"></div>
+<div class="w3-padding-16"></div>
 </main>
 
 <div class="content home">
