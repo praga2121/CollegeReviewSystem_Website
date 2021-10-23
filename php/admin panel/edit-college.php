@@ -8,9 +8,11 @@ if (isset($_POST['edited'])) {
     $college_description = $_POST["college_description"];
     $id = $_POST["id"];
 
-  if (!empty($collegename) && !empty($overall) && !empty($performance) && !empty($facilities) && !empty($price) && !empty($academic)) {
-    $query = "UPDATE colleges SET name = '$collegename', overall='$overall', teachingperformance='$performance',
-      facilities='$facilities', price='$price', academicreputation='$academic', college_description='$college_description' WHERE college_id='$id'";
+  if (!empty($collegename)) {
+    $query = "UPDATE colleges 
+              SET name = '$collegename' 
+              WHERE college_id='$id'";
+              
     if (@mysqli_query($conn, $query)) {
       echo '<!DOCUMENT html>';
       echo '<html>';
