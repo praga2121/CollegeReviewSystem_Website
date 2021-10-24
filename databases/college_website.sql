@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2021 at 01:00 AM
+-- Generation Time: Oct 23, 2021 at 08:04 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.23
 
@@ -60,12 +60,12 @@ CREATE TABLE `colleges` (
 --
 
 INSERT INTO `colleges` (`college_id`, `name`, `overall_rating`, `college_description`, `url`) VALUES
-(1, 'INTI International College', '3', 'MAYBE INTI MAYBE WQORKS', ''),
-(2, 'KDU College', '7', 'UOW Malaysia KDU is a part of the University of Wollongong Australia\'s global network and is one of the top universities in the world.\r\n', ''),
-(3, 'DISTED College', '8', 'DISTED College, one of the best private colleges in Penang Malaysia, offering higher education courses and programmes including pre-university and diploma', ''),
-(4, 'Sentral College', '7', 'SENTRAL College Penang serves to provide excellent and honest tertiary education to students through our various programmes.', ''),
-(5, 'SEGi College', '9', 'SEGi University and Colleges first opened its doors as Systematic College in 1977 in the heart of Kuala Lumpur’s commercial district, offering globally recognised professional qualifications. Since then, SEGi has experienced significant growth by adapting and catering to an increasing demand for tertiary education and professional qualifications in Malaysia. Known as one of the largest private higher education providers in Malaysia, SEGi now serves 25,000 students in five major campuses located in Kota Damansara, Kuala Lumpur, Subang Jaya, Penang and Sarawak. Today, the significance of climbing the career ladder in the industry is highly competitive, therefore SEGi now offers a new breakthrough method known as PACE or Professional and Continuing Education. SEGi PACE enables working adults to upgrade their qualification level whilst accommodating their work schedule, hence fulfilling work-life balance.\r\n\r\n', ''),
-(6, 'MSU College', '8', 'Through its ten branches across the country, MSU College emphasis in two main areas which are School of Science & Technology (SST) and School of Hospitality', ''),
+(1, 'INTI International College', '3.0', 'MAYBE INTI MAYBE WQORKS', 'https://testing/ur.com'),
+(2, 'KDU College', '4.0', 'UOW Malaysia KDU is a part of the University of Wollongong Australia\'s global network and is one of the top universities in the world.\r\n', ''),
+(3, 'DISTED College', '3.0', 'DISTED College, one of the best private colleges in Penang Malaysia, offering higher education courses and programmes including pre-university and diploma', ''),
+(4, 'Sentral College', '', 'SENTRAL College Penang serves to provide excellent and honest tertiary education to students through our various programmes.', ''),
+(5, 'SEGi College', '4.0', 'SEGi University and Colleges first opened its doors as Systematic College in 1977 in the heart of Kuala Lumpur’s commercial district, offering globally recognised professional qualifications. Since then, SEGi has experienced significant growth by adapting and catering to an increasing demand for tertiary education and professional qualifications in Malaysia. Known as one of the largest private higher education providers in Malaysia, SEGi now serves 25,000 students in five major campuses located in Kota Damansara, Kuala Lumpur, Subang Jaya, Penang and Sarawak. Today, the significance of climbing the career ladder in the industry is highly competitive, therefore SEGi now offers a new breakthrough method known as PACE or Professional and Continuing Education. SEGi PACE enables working adults to upgrade their qualification level whilst accommodating their work schedule, hence fulfilling work-life balance.\r\n\r\n', ''),
+(6, 'MSU College', '', 'Through its ten branches across the country, MSU College emphasis in two main areas which are School of Science & Technology (SST) and School of Hospitality', ''),
 (11, 'KDU KPU', '4', 'HIHFDGIFDIOG', ''),
 (37, 'Hopefully Last Test', '0', 'Horororororororororsho', '');
 
@@ -203,8 +203,8 @@ ALTER TABLE `collegesandsubjects`
 --
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`review_id`),
-  ADD KEY `college_id` (`college_id`),
-  ADD KEY `subject_id` (`subject_id`);
+  ADD KEY `reviews_ibfk_1` (`college_id`),
+  ADD KEY `reviews_ibfk_2` (`subject_id`);
 
 --
 -- Indexes for table `subjects`
@@ -255,8 +255,8 @@ ALTER TABLE `collegesandsubjects`
 -- Constraints for table `reviews`
 --
 ALTER TABLE `reviews`
-  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`college_id`),
-  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`);
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`college_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
