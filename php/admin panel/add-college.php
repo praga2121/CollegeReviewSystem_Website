@@ -18,35 +18,38 @@ if (isset($_POST['added'])) {
     $subjects = array_values(array_filter($subjects, 'array_filter'));
 
   if (!empty($college_name)) {
-    $query_college = "INSERT INTO colleges 
+    $stmt_college = $pdo->prepare("INSERT INTO colleges 
                       (name, college_description,url) 
                       VALUES (
-                            {$college_name}, {$college_description},{$url}
-                      )";
-    $query_subjects = "INSERT INTO collegesandsubjects 
+                            :college_name, :college_description, :college_url
+                      )");
+    $stmt_college->bindParam(':college_name', $college_name);
+    $stmt_college->bindParam(':college_description', $college_description);
+    $stmt_college->bindParam(':college_url', $url);
+    $stmt_college->execute();
+
+    $stmt_subject = $pdo->prepare("INSERT INTO collegesandsubjects 
                       (college_id, subject_id, price)
                       VALUES (
                         (SELECT college_id 
                           FROM colleges 
-                          WHERE name={$college_name} 
-                          LIMIT 1), 
+                          WHERE name=? 
+                          LIMIT 1
+                        ), 
                         ?, 
                         ?
-                      )";
-    $stmt_college = $pdo->prepare($query_college);
-    $stmt_college->execute();
-
-    $stmt_subject = $pdo->prepare($query_subjects);
+                      )");
     // subjects query loop can instead be done as one combined string insert where concatenate each insert subject query into one string and then ->query() it
     foreach ($subjects as $subject) {
       $stmt_subject->execute(array(
+        $college_name,
         $subject["name"],
         $subject["price"]
         )
       ); 
 }
 
-    if (/*@mysqli_query($conn, $query)*/ true) {
+    if ($stmt_college && $stmt_subject) {
       echo '<!DOCUMENT html>';
       echo '<html>';
       echo '<head>';
@@ -63,6 +66,7 @@ if (isset($_POST['added'])) {
       echo '</html>';
     } else {
       print mysqli_error($conn);
+      print("ERROR OF PDO");
     }
   }
 } else {
