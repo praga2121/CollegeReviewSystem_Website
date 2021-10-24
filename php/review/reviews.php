@@ -43,16 +43,6 @@ if (isset($page_id)) {
             $_POST['content'], 
             $_POST['rating']]
         );
-        $update_rating_query = "UPDATE colleges 
-                    SET overall_rating = 
-                        (SELECT CAST(AVG(rating) 
-                            AS DECIMAL(10,1)) 
-                        AS overall_rating 
-                        FROM college_website.reviews 
-                        WHERE college_id ={$college_id})
-                    WHERE college_id = {$college_id}";
-        $pdo->query($update_rating_query);
-
         //$stmt->execute([$college_id,$_GET['page_id'], $_POST['name'], $_POST['content'], $_POST['rating']]);
         exit('Your review has been submitted!');
     }

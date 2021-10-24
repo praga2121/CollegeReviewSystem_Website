@@ -11,9 +11,9 @@ try {
   }
 
 if (isset($_POST['added'])) {
-    $college_name = mysqli_real_escape_string($_POST["name"]);
-    $url =  mysqli_real_escape_string($_POST["websitelink"]);
-    $college_description = mysqli_real_escape_string($_POST["description"]);
+    $college_name = $_POST["name"];
+    $url = $_POST["websitelink"];
+    $college_description = $_POST["description"];
     $subjects = $_POST["subject"];
     $subjects = array_values(array_filter($subjects, 'array_filter'));
 
@@ -21,7 +21,7 @@ if (isset($_POST['added'])) {
     $query_college = "INSERT INTO colleges 
                       (name, college_description,url) 
                       VALUES (
-                            '$college_name', '$college_description','$url'
+                        '$college_name', '$college_description','$url'
                       )";
     $query_subjects = "INSERT INTO collegesandsubjects 
                       (college_id, subject_id, price)
@@ -79,7 +79,6 @@ if (isset($_POST['added'])) {
       <link rel="stylesheet" href="../../css/style-admin.css">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     	<!--<link rel="stylesheet" href="../../css/style-admin.css" />
     	<link rel="preconnect" href="https://fonts.gstatic.com" />
     	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat%26display=swap" />-->
@@ -109,10 +108,10 @@ if (isset($_POST['added'])) {
             foreach ($subjects as $subject) : ?>
               <div>
                 <!-- input's name has '[]' in the end to signify that post will be a 2 dimensional array where items are grouped by subject_id and have -->
-                <input type="checkbox" name="subject[<?= $increment?>][name]" value="<?= $subject["subject_id"]?>" />
+                <input type="checkbox" name="subject[<?= $increment?>][name]" value="<?= $subject["subject_id"]?>" >
                 <label for="subjects"><?= $subject["name"] ?></label>
 
-                <input type="number" name="subject[<?= $increment?>][price]" min="1" disabled />
+                <input type="number" name="subject[<?= $increment?>][price]" step="100">
               </div>
             <?php
             $increment = $increment + 1; 
@@ -124,7 +123,6 @@ if (isset($_POST['added'])) {
           </form>
     		</div>
     	</div>
-      <script src="../../js/disableCheckbox.js"></script>
     </body>
 
 </html>
