@@ -17,7 +17,7 @@ function tableSearch() {
         td = tr[i].getElementsByTagName("td");
         //j - column of the table. 
         //0 - first column, 1 - second column, so on. We start from 1 because of checkboxes in the first column  
-        for (j = 1; j < td.length; j++) {
+        for (j = 0; j < td.length; j++) {
             let tdata = td[j];
             if (tdata) {
                 if (tdata.innerHTML.toUpperCase().indexOf(search) > -1) {
