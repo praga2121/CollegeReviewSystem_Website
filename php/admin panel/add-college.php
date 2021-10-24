@@ -15,13 +15,14 @@ if (isset($_POST['added'])) {
     $url =  $_POST["websitelink"];
     $college_description = $_POST["description"];
     $subjects = $_POST["subject"];
+    $duration =$_POST["duration"];
     $subjects = array_values(array_filter($subjects, 'array_filter'));
 
   if (!empty($college_name)) {
     $stmt_college = $pdo->prepare("INSERT INTO colleges 
                       (name, college_description,url) 
                       VALUES (
-                            :college_name, :college_description, :college_url
+                            :college_name, :college_description, :college_url, 
                       )");
     $stmt_college->bindParam(':college_name', $college_name);
     $stmt_college->bindParam(':college_description', $college_description);
@@ -29,7 +30,7 @@ if (isset($_POST['added'])) {
     $stmt_college->execute();
 
     $stmt_subject = $pdo->prepare("INSERT INTO collegesandsubjects 
-                      (college_id, subject_id, price)
+                      (college_id, subject_id, price, duration)
                       VALUES (
                         (SELECT college_id 
                           FROM colleges 
@@ -37,6 +38,7 @@ if (isset($_POST['added'])) {
                           LIMIT 1
                         ), 
                         ?, 
+                        ?,
                         ?
                       )");
     // subjects query loop can instead be done as one combined string insert where concatenate each insert subject query into one string and then ->query() it
@@ -44,7 +46,8 @@ if (isset($_POST['added'])) {
       $stmt_subject->execute(array(
         $college_name,
         $subject["name"],
-        $subject["price"]
+        $subject["price"],
+        $subject["duration"], //This is line 49
         )
       ); 
 }
@@ -114,9 +117,10 @@ if (isset($_POST['added'])) {
               <div>
                 <!-- input's name has '[]' in the end to signify that post will be a 2 dimensional array where items are grouped by subject_id and have -->
                 <input type="checkbox" name="subject[<?= $increment?>][name]" value="<?= $subject["subject_id"]?>" />
-                <label for="subjects"><?= $subject["name"] ?></label>
+                <label for="subjects"><?= $subject["name"]  ?></label>
 
                 <input type="number" name="subject[<?= $increment?>][price]" min="1" disabled />
+                <input type="number" name="subject[<?= $increment?>][duration]" min="1" disabled />
               </div>
             <?php
             $increment = $increment + 1; 
