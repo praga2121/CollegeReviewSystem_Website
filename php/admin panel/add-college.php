@@ -15,7 +15,6 @@ if (isset($_POST['added'])) {
     $url =  $_POST["websitelink"];
     $college_description = $_POST["description"];
     $subjects = $_POST["subject"];
-    $duration =$_POST["duration"];
     $subjects = array_values(array_filter($subjects, 'array_filter'));
 
   if (!empty($college_name)) {
@@ -47,7 +46,7 @@ if (isset($_POST['added'])) {
         $college_name,
         $subject["name"],
         $subject["price"],
-        $subject["duration"], //This is line 49
+        $subject["duration"], //This is line 50
         )
       ); 
 }
@@ -120,7 +119,7 @@ if (isset($_POST['added'])) {
                 <label for="subjects"><?= $subject["name"]  ?></label>
 
                 <input type="number" name="subject[<?= $increment?>][price]" min="1" disabled />
-                <input type="number" name="subject[<?= $increment?>][duration]" min="1" disabled />
+                <input type="number" step="any" name="subject[<?= $increment?>][duration]" min="1" disabled />
               </div>
             <?php
             $increment = $increment + 1; 

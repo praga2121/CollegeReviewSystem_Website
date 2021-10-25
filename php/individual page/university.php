@@ -81,7 +81,7 @@ if ($row_number > 0) {
         echo '    <td>'. "RM " . $row_subject["price"].'</td>';
         echo '</tr>';
 		//space for  duration
-		echo '    <td>'. "RM " . $row_subject["duration"].'</td>';
+		echo '    <td>'.  $row_subject["duration"]." Years" .'</td>';
 		echo '<tr>';
 		echo '   ';
 		echo '</tr>';
