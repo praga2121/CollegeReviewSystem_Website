@@ -21,7 +21,7 @@ if (isset($_POST['added'])) {
     $stmt_college = $pdo->prepare("INSERT INTO colleges 
                       (name, college_description,url) 
                       VALUES (
-                            :college_name, :college_description, :college_url, 
+                            :college_name, :college_description, :college_url
                       )");
     $stmt_college->bindParam(':college_name', $college_name);
     $stmt_college->bindParam(':college_description', $college_description);
@@ -46,10 +46,10 @@ if (isset($_POST['added'])) {
         $college_name,
         $subject["name"],
         $subject["price"],
-        $subject["duration"], //This is line 50
+        $subject["duration"]
         )
       ); 
-}
+    }
 
     if ($stmt_college && $stmt_subject) {
       echo '<!DOCUMENT html>';
@@ -104,7 +104,7 @@ if (isset($_POST['added'])) {
     				<input type="text" name="websitelink" id="websitelink" />
     				<br/>
     				<br/>
-    				<textarea rows="4" cols="50" name="description" id="description" placeholder="Description"></textarea>
+    				<textarea rows="4" cols="66" name="description" id="description" placeholder="Description"></textarea>
     				<br/>
     				<br/>
     				<br/>
@@ -116,17 +116,17 @@ if (isset($_POST['added'])) {
               <div>
                 <!-- input's name has '[]' in the end to signify that post will be a 2 dimensional array where items are grouped by subject_id and have -->
                 <input type="checkbox" name="subject[<?= $increment?>][name]" value="<?= $subject["subject_id"]?>" />
-                <label for="subjects"><?= $subject["name"]  ?></label>
+                <label class="price-label"for="subjects"><?= $subject["name"] ?></label>
 
-                <input type="number" name="subject[<?= $increment?>][price]" min="1" disabled />
-                <input type="number" step="any" name="subject[<?= $increment?>][duration]" min="1" disabled />
+                <input type="number" name="subject[<?= $increment?>][price]" min="1" disabled placeholder="Enter Price"/>
+                <input type="number" name="subject[<?= $increment?>][duration]" min="1" step=".1" disabled placeholder="Enter Duration"/>
               </div>
             <?php
             $increment = $increment + 1; 
             endforeach ?>
             </div>
 
-            <input class="edit-button" type="submit" name="submit" value="Add college" />
+            <input class="save-button" type="submit" name="submit" value="Add college" />
     				<input type='hidden' name='added' value='true' /> 
           </form>
     		</div>

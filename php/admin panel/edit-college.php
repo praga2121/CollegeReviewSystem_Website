@@ -9,6 +9,15 @@ function isValueInKeyOfArray($array, $key, $val) {
     return false;
 }
 
+function array_filter_recursive($input){
+    foreach ($input as &$value){
+        if (is_array($value)){
+            $value = array_filter_recursive($value);
+        }
+    }
+    return array_filter($input);
+}
+
 try {
     $pdo = new PDO('mysql:host=' . $dbServername . ';dbname=' . $dbName . ';charset=utf8', $dbUsername);
   } catch (PDOException $exception) {
@@ -20,22 +29,57 @@ if (isset($_POST['edited'])) {
     $collegename = $_POST["collegename"];
     $college_description = $_POST["college_description"];
     $id = $_POST["id"];
+    $url =  $_POST["websitelink"];
+    $subjects = $_POST["subject"];
+    $subjects = array_values(array_filter($subjects, 'array_filter'));
+    
+    $subjects = array_filter_recursive($subjects);
 
   if (!empty($collegename)) {
-    $query = "UPDATE colleges 
-              SET name = '$collegename' 
-              WHERE college_id='$id'";
+    $stmt_edit_college = $pdo->prepare("UPDATE colleges 
+              SET name = :collegename, 
+                  college_description = :college_description, 
+                  url = :url
+              WHERE college_id=:id");
+    $stmt_edit_college->bindParam(':collegename', $collegename);
+    $stmt_edit_college->bindParam(':college_description', $college_description);
+    $stmt_edit_college->bindParam(':url', $url);
+    $stmt_edit_college->bindParam(':id', $id);
+    $stmt_edit_college->execute();
+    
+    $stmt_delete = $pdo->prepare("DELETE  FROM collegesandsubjects WHERE college_id = :id");
+    $stmt_delete->bindParam(':id', $id);
+    $stmt_delete->execute();
 
-    if (@mysqli_query($conn, $query)) {
+    $stmt_subject = $pdo->prepare("INSERT INTO collegesandsubjects 
+                      (college_id, subject_id, price, duration)
+                      VALUES (
+                        ?, 
+                        ?, 
+                        ?
+                      )");
+    // subjects query loop can instead be done as one combined string insert where concatenate each insert subject query into one string and then ->query() it
+    foreach ($subjects as $subject) {
+      $stmt_subject->execute(array(
+        $id,
+        $subject["name"],
+        $subject["price"],
+        $subject["duration"]
+        )
+      );
+    }
+
+    if ($stmt_edit_college && $stmt_subject) {
       echo '<!DOCUMENT html>';
       echo '<html>';
       echo '<head>';
       echo '<title>Edit | Admin Panel</title>';
       echo '<link rel="stylesheet" href="../resources/style-admin.css">';
       echo '<link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
       echo '</head>';
       echo '<body>';
+      //print_r($subjects);
       echo '<div id="main-container">';
       echo '<h1>Database Updated Successfully</h1>';
       echo '<a href = "listing.php">Back to college listings</a>';
@@ -55,7 +99,7 @@ if (isset($_POST['edited'])) {
   $query_select_all_subject = "SELECT * FROM college_website.subjects";
   $subjects = $pdo->query($query_select_all_subject)->fetchAll();
 
-  $college_subjects = $pdo->query("SELECT `subjects`.`name`, `collegesandsubjects`.`price`
+  $college_subjects = $pdo->query("SELECT `subjects`.`name`, `collegesandsubjects`.`price`.`duration`
     FROM `collegesandsubjects` 
     LEFT JOIN `subjects` 
       ON `collegesandsubjects`.`subject_id` = `subjects`.`subject_id` 
@@ -109,7 +153,7 @@ if (isset($_POST['edited'])) {
     			<br/>
           <textarea 
             rows="4"
-            cols="50" 
+            cols="66" 
             name="college_description" 
             id="college_description" 
             form="edit-form" 
@@ -131,8 +175,8 @@ if (isset($_POST['edited'])) {
                   value="<?= $subject["subject_id"]?>" 
                   <?php echo (isValueInKeyOfArray($college_subjects, "name", $subject["name"]) ? 'checked' : '');?>
                 />
-                <label 
-                  for="subjects"><?= $subject["name"] ?>
+                <label
+                  class="price-label"for="subjects"><?= $subject["name"] ?>
                 </label>
 
                 <input 
@@ -141,7 +185,15 @@ if (isset($_POST['edited'])) {
                   min="1" 
                   <?php echo (isValueInKeyOfArray($college_subjects, "name", $subject["name"]) ? "value={$college_subjects[$i++]['price']}" : " disabled");?>
                 />
+
+                <input 
+                  type="number" 
+                  name="subject[<?= $increment?>][duration]" 
+                  min="1" 
+                  <?php echo (isValueInKeyOfArray($college_subjects, "name", $subject["name"]) ? "value={$college_subjects[$i++]['duration']}" : " disabled");?>
+                />
               </div>
+              
             <?php
             $increment = $increment + 1; 
             endforeach ?>

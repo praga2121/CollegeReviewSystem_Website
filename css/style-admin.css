@@ -19,10 +19,21 @@ a, h1,h2, th, td, h3,input, p{
   font-family: 'Montserrat';
   
 }
+.bold{
+  font-weight: bold;
+}
 label{
   font-family: 'Montserrat';
   color: #333;
+  display: inline-block;
+  width: 320px;
 }
+.price-label{
+  font-family: 'Montserrat';
+  color: #333;
+  display: inline-block;
+  width: 300px;
+  }  
 .email{
   font-family: 'Montserrat';
 }

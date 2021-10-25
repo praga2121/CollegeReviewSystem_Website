@@ -56,10 +56,10 @@ echo '<div style="width: 100%">
 
 //echo '<div class="w3-row-padding w3-center w3-padding-64" id="pricing">';
 echo '<div class="subject-container">';
-echo '<h2 class="subject-header">Popular Subjects</h2>';
+echo '<h2 class="subject-header">Subjects</h2>';
 
 $sql_subject = 
-"SELECT `subjects`.`name`, `price`,`duration`
+"SELECT `subjects`.`name`, `price` , `duration`
 FROM `collegesandsubjects` 
 LEFT JOIN `subjects` ON `collegesandsubjects`.`subject_id` = `subjects`.`subject_id` 
 WHERE `collegesandsubjects`.`college_id` = '.$college_id.' AND `subjects`.`subject_id` = `collegesandsubjects`.`subject_id` 
@@ -77,14 +77,21 @@ if ($row_number > 0) {
         echo '    <th style="width: 40%;background-color: #ebbc3d;">' . $row_subject["name"] . '</th>';
         echo '</tr>';
 
-        echo '<tr>';
-        echo '    <td>'. "RM " . $row_subject["price"].'</td>';
-        echo '</tr>';
-		//space for  duration
-		echo '    <td>'.  $row_subject["duration"]." Years" .'</td>';
 		echo '<tr>';
-		echo '   ';
-		echo '</tr>';
+        echo '<td style="font-weight:bold">'."Approximate Price ".'</td>';
+        echo '</tr>';
+
+        echo '<tr>';
+        echo '    <td>'."RM ". $row_subject["price"].'</td>';
+        echo '</tr>';
+
+		echo '<tr>';
+        echo '<td style="font-weight:bold">'."Estimated Duration ".'</td>';
+        echo '</tr>';
+
+		echo '<tr>';
+        echo '<td>'.$row_subject["duration"]." Years".'</td>'; //replace with duration from database
+        echo '</tr>';
         echo '</table>';
     }
 }
@@ -96,8 +103,8 @@ if ($row_number > 0) {
 </main>
 
 <div class="content home">
-		<h2>Reviews</h2>
-		<p>Check out the below reviews for this college.</p>
+		<h2 style="font-family: 'Montserrat'">Reviews</h2>
+		<p style="font-family: 'Montserrat'">Check out the below reviews for this college.</p>
 		<div class="reviews"></div>
 
 
