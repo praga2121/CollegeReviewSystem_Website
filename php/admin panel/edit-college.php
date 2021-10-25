@@ -152,7 +152,7 @@ if (isset($_POST['edited'])) {
     			<br/>
           <textarea 
             rows="4"
-            cols="50" 
+            cols="66" 
             name="college_description" 
             id="college_description" 
             form="edit-form" 
@@ -174,8 +174,8 @@ if (isset($_POST['edited'])) {
                   value="<?= $subject["subject_id"]?>" 
                   <?php echo (isValueInKeyOfArray($college_subjects, "name", $subject["name"]) ? 'checked' : '');?>
                 />
-                <label 
-                  for="subjects"><?= $subject["name"] ?>
+                <label
+                  class="price-label"for="subjects"><?= $subject["name"] ?>
                 </label>
 
                 <input 
@@ -184,7 +184,10 @@ if (isset($_POST['edited'])) {
                   min="1" 
                   <?php echo (isValueInKeyOfArray($college_subjects, "name", $subject["name"]) ? "value={$college_subjects[$i++]['price']}" : " disabled");?>
                 />
+
+                
               </div>
+              
             <?php
             $increment = $increment + 1; 
             endforeach ?>
