@@ -9,6 +9,15 @@ function isValueInKeyOfArray($array, $key, $val) {
     return false;
 }
 
+function array_filter_recursive($input){
+    foreach ($input as &$value){
+        if (is_array($value)){
+            $value = array_filter_recursive($value);
+        }
+    }
+    return array_filter($input);
+}
+
 try {
     $pdo = new PDO('mysql:host=' . $dbServername . ';dbname=' . $dbName . ';charset=utf8', $dbUsername);
   } catch (PDOException $exception) {
@@ -20,13 +29,46 @@ if (isset($_POST['edited'])) {
     $collegename = $_POST["collegename"];
     $college_description = $_POST["college_description"];
     $id = $_POST["id"];
+    $url =  $_POST["websitelink"];
+    $subjects = $_POST["subject"];
+    $subjects = array_values(array_filter($subjects, 'array_filter'));
+    
+    $subjects = array_filter_recursive($subjects);
 
   if (!empty($collegename)) {
-    $query = "UPDATE colleges 
-              SET name = '$collegename' 
-              WHERE college_id='$id'";
+    $stmt_edit_college = $pdo->prepare("UPDATE colleges 
+              SET name = :collegename, 
+                  college_description = :college_description, 
+                  url = :url
+              WHERE college_id=:id");
+    $stmt_edit_college->bindParam(':collegename', $collegename);
+    $stmt_edit_college->bindParam(':college_description', $college_description);
+    $stmt_edit_college->bindParam(':url', $url);
+    $stmt_edit_college->bindParam(':id', $id);
+    $stmt_edit_college->execute();
+    
+    $stmt_delete = $pdo->prepare("DELETE  FROM collegesandsubjects WHERE college_id = :id");
+    $stmt_delete->bindParam(':id', $id);
+    $stmt_delete->execute();
 
-    if (@mysqli_query($conn, $query)) {
+    $stmt_subject = $pdo->prepare("INSERT INTO collegesandsubjects 
+                      (college_id, subject_id, price)
+                      VALUES (
+                        ?, 
+                        ?, 
+                        ?
+                      )");
+    // subjects query loop can instead be done as one combined string insert where concatenate each insert subject query into one string and then ->query() it
+    foreach ($subjects as $subject) {
+      $stmt_subject->execute(array(
+        $id,
+        $subject["name"],
+        $subject["price"]
+        )
+      );
+    }
+
+    if ($stmt_edit_college && $stmt_subject) {
       echo '<!DOCUMENT html>';
       echo '<html>';
       echo '<head>';
@@ -36,6 +78,7 @@ if (isset($_POST['edited'])) {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
       echo '</head>';
       echo '<body>';
+      print_r($subjects);
       echo '<div id="main-container">';
       echo '<h1>Database Updated Successfully</h1>';
       echo '<a href = "listing.php">Back to college listings</a>';

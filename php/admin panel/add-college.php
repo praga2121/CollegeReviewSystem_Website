@@ -47,7 +47,7 @@ if (isset($_POST['added'])) {
         $subject["price"]
         )
       ); 
-}
+    }
 
     if ($stmt_college && $stmt_subject) {
       echo '<!DOCUMENT html>';
