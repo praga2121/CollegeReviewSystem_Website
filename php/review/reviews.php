@@ -1,5 +1,6 @@
 <?php
 require '../config.php';
+
 $college_id = $_GET['college_id'];
 $page_id = 1;
 try {
