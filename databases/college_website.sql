@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2021 at 02:55 PM
+-- Generation Time: Oct 26, 2021 at 10:14 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -55,13 +55,6 @@ CREATE TABLE `colleges` (
   `url` varchar(2083) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `colleges`
---
-
-INSERT INTO `colleges` (`college_id`, `name`, `overall_rating`, `college_description`, `url`) VALUES
-(46, 'INTI College Penang', '4.0', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut cursus tincidunt augue, nec imperdiet est elementum quis. Nullam massa quam, imperdiet rhoncus fringilla semper, consectetur a mi. Sed mattis vel velit id cursus. Sed bibendum aliquet purus vitae sodales. Vestibulum cursus nec dui congue pretium. Nulla facilisi. Aenean quis blandit nisi. Etiam vel eleifend augue. Morbi bibendum interdum dignissim. Sed fringilla vel justo id porta. Etiam in fringilla metus. Sed mattis orci massa, nec id.\r\n', 'https://newinti.edu.my/campuses/inti-international-college-penang/');
-
 -- --------------------------------------------------------
 
 --
@@ -74,17 +67,6 @@ CREATE TABLE `collegesandsubjects` (
   `price` int(11) NOT NULL DEFAULT 0,
   `duration` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `collegesandsubjects`
---
-
-INSERT INTO `collegesandsubjects` (`college_id`, `subject_id`, `price`, `duration`) VALUES
-(46, 1, 36440, '2'),
-(46, 2, 34900, '2.5'),
-(46, 3, 34340, '2.5'),
-(46, 4, 32498, '2'),
-(46, 5, 32498, '2');
 
 -- --------------------------------------------------------
 
@@ -102,13 +84,6 @@ CREATE TABLE `reviews` (
   `rating` tinyint(1) NOT NULL,
   `submit_date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `reviews`
---
-
-INSERT INTO `reviews` (`review_id`, `college_id`, `subject_id`, `page_id`, `name`, `content`, `rating`, `submit_date`) VALUES
-(40, 46, 1, 1, 'Daniel', 'Great course!', 4, '2021-10-25 17:10:02');
 
 -- --------------------------------------------------------
 
@@ -204,7 +179,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `colleges`
 --
 ALTER TABLE `colleges`
-  MODIFY `college_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `college_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `reviews`
