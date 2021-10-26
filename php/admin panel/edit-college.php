@@ -52,10 +52,11 @@ if (isset($_POST['edited'])) {
     $stmt_delete->execute();
 
     $stmt_subject = $pdo->prepare("INSERT INTO collegesandsubjects 
-                      (college_id, subject_id, price)
+                      (college_id, subject_id, price, duration)
                       VALUES (
                         ?, 
                         ?, 
+                        ?,
                         ?
                       )");
     // subjects query loop can instead be done as one combined string insert where concatenate each insert subject query into one string and then ->query() it
@@ -63,7 +64,8 @@ if (isset($_POST['edited'])) {
       $stmt_subject->execute(array(
         $id,
         $subject["name"],
-        $subject["price"]
+        $subject["price"],
+        $subject["duration"]
         )
       );
     }
@@ -75,13 +77,13 @@ if (isset($_POST['edited'])) {
       echo '<title>Edit | Admin Panel</title>';
       echo '<link rel="stylesheet" href="../resources/style-admin.css">';
       echo '<link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
       echo '</head>';
       echo '<body>';
-      print_r($subjects);
+      //print_r($subjects);
       echo '<div id="main-container">';
       echo '<h1>Database Updated Successfully</h1>';
-      echo '<a href = "listing.php">Back to college listings</a>';
+      echo '<a style="color:black" href = "listing.php">Back to college listings</a>';
       echo '</div>';
       echo '</body>';
       echo '</html>';
@@ -98,7 +100,7 @@ if (isset($_POST['edited'])) {
   $query_select_all_subject = "SELECT * FROM college_website.subjects";
   $subjects = $pdo->query($query_select_all_subject)->fetchAll();
 
-  $college_subjects = $pdo->query("SELECT `subjects`.`name`, `collegesandsubjects`.`price`
+  $college_subjects = $pdo->query("SELECT `subjects`.`name`, `collegesandsubjects`.`price` , `duration`
     FROM `collegesandsubjects` 
     LEFT JOIN `subjects` 
       ON `collegesandsubjects`.`subject_id` = `subjects`.`subject_id` 
@@ -164,6 +166,7 @@ if (isset($_POST['edited'])) {
             <?php 
             $increment = 0;
             $i = 0;
+            $j = 0;
             foreach ($subjects as $subject) : ?>
               <div>
                 <!-- input's name has '[]' in the end to signify that post will be a 2 dimensional array where items are grouped by subject_id and have -->
@@ -181,11 +184,19 @@ if (isset($_POST['edited'])) {
                 <input 
                   type="number" 
                   name="subject[<?= $increment?>][price]" 
-                  min="1" 
+                  min="1"
+                  placeholder="Enter Price"
                   <?php echo (isValueInKeyOfArray($college_subjects, "name", $subject["name"]) ? "value={$college_subjects[$i++]['price']}" : " disabled");?>
                 />
 
-                
+                <input 
+                  type="number" 
+                  name="subject[<?= $increment?>][duration]" 
+                  min="1" 
+                  step="0.1"
+                  placeholder="Enter Duration"
+                  <?php echo (isValueInKeyOfArray($college_subjects, "name", $subject["name"]) ? "value={$college_subjects[$j++]['duration']}" : " disabled");?>
+                />
               </div>
               
             <?php
