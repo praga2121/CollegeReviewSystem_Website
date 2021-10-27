@@ -26,13 +26,19 @@ label{
   font-family: 'Montserrat';
   color: #333;
   display: inline-block;
-  width: 320px;
+  width: 422px;
 }
+.login-container{
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  }
 .price-label{
   font-family: 'Montserrat';
   color: #333;
   display: inline-block;
-  width: 300px;
+  width: 400px;
+  margin-bottom:20px ;
   }  
 .email{
   font-family: 'Montserrat';
@@ -69,16 +75,11 @@ a{
 }
 .add-button{
   color: #333333;
-  margin-right: 860px;
-  margin-left: 860px;
+  margin-left: 45%;
   border-style: solid;
   padding: 10px;
 }
-.container {
-  height: 200px;
-  position: relative;
-  border: 3px solid green;
-}
+
 .vertical-center {
   margin: 0;
   position: absolute;

@@ -27,7 +27,6 @@ if (isset($_POST['added'])) {
     $stmt_college->bindParam(':college_description', $college_description);
     $stmt_college->bindParam(':college_url', $url);
     $stmt_college->execute();
-
     $stmt_subject = $pdo->prepare("INSERT INTO collegesandsubjects 
                       (college_id, subject_id, price, duration)
                       VALUES (
@@ -86,9 +85,6 @@ if (isset($_POST['added'])) {
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    	<!--<link rel="stylesheet" href="../../css/style-admin.css" />
-    	<link rel="preconnect" href="https://fonts.gstatic.com" />
-    	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat%26display=swap" />-->
     </head>
 
     <body>
@@ -104,7 +100,7 @@ if (isset($_POST['added'])) {
     				<input type="text" name="websitelink" id="websitelink" />
     				<br/>
     				<br/>
-    				<textarea rows="4" cols="66" name="description" id="description" placeholder="Description"></textarea>
+    				<textarea rows="4" cols="104" name="description" id="description" placeholder="College Description"></textarea>
     				<br/>
     				<br/>
     				<br/>
@@ -116,7 +112,7 @@ if (isset($_POST['added'])) {
               <div>
                 <!-- input's name has '[]' in the end to signify that post will be a 2 dimensional array where items are grouped by subject_id and have -->
                 <input type="checkbox" name="subject[<?= $increment?>][name]" value="<?= $subject["subject_id"]?>" />
-                <label class="price-label"for="subjects"><?= $subject["name"] ?></label>
+                <label class="price-label"for="subjects" ><?= $subject["name"] ?></label>
 
                 <input type="number" name="subject[<?= $increment?>][price]" min="1" disabled placeholder="Enter Price"/>
                 <input type="number" name="subject[<?= $increment?>][duration]" min="1" step=".1" disabled placeholder="Enter Duration"/>

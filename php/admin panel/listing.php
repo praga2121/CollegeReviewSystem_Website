@@ -22,7 +22,7 @@ if (isset($_POST['added'])) {
     }
   }
 } else {
-  include '../support elements/header.php';
+  echo '<link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
   echo '<link rel="stylesheet" href="../../css/style-admin.css">';
   echo '<title>College Listings | Admin Panel</title>';
   echo '</head>';
@@ -30,10 +30,6 @@ if (isset($_POST['added'])) {
   echo '<div class="main-container">';
   echo '<h1 align="center">Admin Dashboard</h1>';
   echo '<a class = "add-button" href="add-college.php" >Add College</a>';
-  
-  
-
-
   echo '<table class="listing" width="500">';
   echo '<tr>';
   echo '<th>Name</th>';

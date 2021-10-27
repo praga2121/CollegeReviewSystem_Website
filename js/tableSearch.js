@@ -16,17 +16,15 @@ function tableSearch() {
     for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td");
         //j - column of the table. 
-        //0 - first column, 1 - second column, so on. We start from 1 because of checkboxes in the first column  
+        //0 - first column, 1 - second column, so on. 
         for (j = 0; j < td.length; j++) {
             let tdata = td[j];
             if (tdata) {
                 if (tdata.innerHTML.toUpperCase().indexOf(search) > -1) {
                     tr[i].style.display = "";
-                    //tr[i].style.visibilit="";
                     break;
                 } else {
                     tr[i].style.display = "none";
-                    //tr[i].style.visibility="hidden";
                 }
             }
         }

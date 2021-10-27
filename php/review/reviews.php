@@ -1,6 +1,5 @@
 <?php
 require '../config.php';
-
 $college_id = $_GET['college_id'];
 $page_id = 1;
 try {
@@ -106,7 +105,6 @@ $subjects = $sql_subjets->fetchAll(PDO::FETCH_ASSOC);
 
         ?>
         <h3 class="name"><?= htmlspecialchars($review['name'], ENT_QUOTES) ?> - <?= $subjects[$review["subject_id"]-1]["name"] ?></h3>
-       <!-- <h3>Diploma in Computer Science</h3> -->
         <div>
             <span class="rating"><?= str_repeat('&#9733;', $review['rating']) ?></span>
             <span class="date"><?= time_elapsed_string($review['submit_date']) ?></span>

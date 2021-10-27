@@ -154,7 +154,7 @@ if (isset($_POST['edited'])) {
     			<br/>
           <textarea 
             rows="4"
-            cols="66" 
+            cols="104" 
             name="college_description" 
             id="college_description" 
             form="edit-form" 

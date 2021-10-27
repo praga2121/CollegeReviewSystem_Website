@@ -16,7 +16,7 @@ $college_id = $row['college_id'];
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CollegeReport</title>
+<?php echo'<title>'.$row["name"].'</title>';?>
 <link rel="stylesheet" href="../../css/style-main.css"/>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <link href="../../css/reviews.css" rel="stylesheet" type="text/css">
@@ -56,7 +56,7 @@ echo '<div style="width: 100%">
 
 //echo '<div class="w3-row-padding w3-center w3-padding-64" id="pricing">';
 echo '<div class="subject-container">';
-echo '<h2 class="subject-header">Subjects</h2>';
+echo '<h2 class="subject-header">Popular Subjects</h2>';
 
 $sql_subject = 
 "SELECT `subjects`.`name`, `price` , `duration`
@@ -74,7 +74,7 @@ if ($row_number > 0) {
     while ($row_subject = mysqli_fetch_assoc($result_subject)) {
         echo '<table class="subject-table">';
         echo '<tr>';
-        echo '    <th style="width: 40%;background-color: #ebbc3d;">' . $row_subject["name"] . '</th>';
+        echo '<th style="width: 40%;background-color: #ebbc3d;">' . $row_subject["name"] . '</th>';
         echo '</tr>';
 
 		echo '<tr>';
@@ -90,7 +90,7 @@ if ($row_number > 0) {
         echo '</tr>';
 
 		echo '<tr>';
-        echo '<td>'.$row_subject["duration"]." Years".'</td>'; //replace with duration from database
+        echo '<td>'.$row_subject["duration"]." Years".'</td>';
         echo '</tr>';
         echo '</table>';
     }
@@ -111,28 +111,20 @@ if ($row_number > 0) {
 		<script>
 		const college_id = <?= $college_id?>;
         console.log(college_id);
-		// get code from review.php page by `college_id` 
+
 		fetch("../review/reviews.php?college_id=" + college_id).then(response => response.text()).then(data => {
-			// find element with `.reviews` and assign it all that code 
 			document.querySelector(".reviews").innerHTML = data;
 			document.querySelector(".reviews .write_review_btn").onclick = event => {
-				// prevent default behaviour of link "Write Button" 
 				event.preventDefault();
-				// change display of "Write Review" section from `none` that displays nothing to `block`
 				document.querySelector(".reviews .write_review").style.display = 'block';
-				// when "write review" pressed the focus shift to "Your name" field. So we can start typing immediately
 				document.querySelector(".reviews .write_review input[name='name']").focus();
 			};
-			// When "submit review" is pressed this event is activated
 			document.querySelector(".reviews .write_review form").onsubmit = event => {
-				// we prevent the form from submitting cause, we want to do it ourselves
 				event.preventDefault();
-				// send values of the form to the review.php with `college_id`
 				fetch("../review/reviews.php?college_id=" + college_id, {
 					method: 'POST',
 					body: new FormData(document.querySelector(".reviews .write_review form"))
 				}).then(response => response.text()).then(data => {
-					// return the review form to the closed state by changing
 					document.querySelector(".reviews .write_review").innerHTML = data;
 				});
 			};
