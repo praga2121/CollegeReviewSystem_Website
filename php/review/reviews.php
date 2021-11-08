@@ -68,6 +68,11 @@ if (isset($page_id)) {
     exit('Please provide the page ID.');
 }
 
+// brute force the fix lmao 
+//$sql_all_subjects =  $pdo->prepare("SELECT * from `subjects`");
+$all_subjects = $pdo->query("SELECT * from `subjects`")->fetchAll(PDO::FETCH_ASSOC);
+
+
 $sql_subjets = $pdo->prepare("SELECT `subjects`.`name`, `subjects`.`subject_id`
 FROM `collegesandsubjects` 
 LEFT JOIN `subjects` ON `collegesandsubjects`.`subject_id` = `subjects`.`subject_id` 
@@ -104,7 +109,7 @@ $subjects = $sql_subjets->fetchAll(PDO::FETCH_ASSOC);
         <?php
 
         ?>
-        <h3 class="name"><?= htmlspecialchars($review['name'], ENT_QUOTES) ?> - <?= $subjects[$review["subject_id"]-1]["name"] ?></h3>
+        <h3 class="name"><?= htmlspecialchars($review['name'], ENT_QUOTES) ?> - <?= $all_subjects[$review["subject_id"]-1]["name"] ?></h3>
         <div>
             <span class="rating"><?= str_repeat('&#9733;', $review['rating']) ?></span>
             <span class="date"><?= time_elapsed_string($review['submit_date']) ?></span>
