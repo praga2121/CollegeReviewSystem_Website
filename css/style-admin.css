@@ -28,6 +28,12 @@ label{
   display: inline-block;
   width: 422px;
 }
+.login-label{
+  font-family: 'Montserrat';
+  color: #333;
+  display: inline-block;
+  width: 200px;
+}
 .login-container{
   display: flex;
   justify-content: center; 

@@ -35,7 +35,7 @@ if (isset($_POST['edited'])) {
     
     $subjects = array_filter_recursive($subjects);
 
-  if (!empty($collegename)) {
+  if (!isset($collegename)) {
     $stmt_edit_college = $pdo->prepare("UPDATE colleges 
               SET name = :collegename, 
                   college_description = :college_description, 

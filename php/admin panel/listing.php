@@ -1,20 +1,17 @@
 <?php
 require '../config.php';
 include '../support elements/admin-nav.php';
-
 /** @var TYPE_NAME $conn */
-
 $sql = "SELECT * FROM college_website.colleges";
 $result = mysqli_query($conn, $sql);
 $resultsCheck = mysqli_num_rows($result);
-
 if (isset($_POST['added'])) {
     $collegename = $_POST["collegename"];
     $overall = $_POST["overall"];
     $college_description = $_POST["college_description"];
-
   if (!empty($collegename) && !empty($overall) && !empty($college_description)) {
-    $query = "INSERT INTO colleges (name, overall, teachingperformance, facilities, price, academicreputation, college_description) VALUES ('$collegename', '$overall', '$performance', '$facilities', '$price', '$academic', '$college_description')";
+    $query = "INSERT INTO colleges (name, overall, teachingperformance, facilities, price, academicreputation, college_description) VALUES ('$collegename', '$overall', 
+    '$performance', '$facilities', '$price', '$academic', '$college_description')";
     if (@mysqli_query($conn, $query)) {
       print "Records added successfully";
     } else {
@@ -38,7 +35,6 @@ if (isset($_POST['added'])) {
   if ($resultsCheck > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
     ?>
-
       <td><?= $row['name'] ?></td>
       <td>
         <div>
