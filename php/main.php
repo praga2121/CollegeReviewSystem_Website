@@ -8,7 +8,7 @@ $sql =
 FROM college_website.colleges 
 ORDER BY overall_rating DESC";
 
-//associative array of "colleges' table
+//associative array of 'colleges' table
 $result = mysqli_query($conn, $sql);
 //number of row in "colleges" table
 $resultsCheck = mysqli_num_rows($result);
@@ -23,15 +23,14 @@ echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
 echo '<title>CollegeReport</title>';
 echo '<link rel="stylesheet" href="../css/style-main.css"/>';
 echo '<link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
-
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> ';
 echo '</head>';
 //HEAD-END
 //BODY START
 echo '<body>';
-/* NAVIGATION BAR*/
+/* NAV BAR*/
 include 'support elements/nav_wide.php';
-/* NAVIGATION BAR - END*/
+/* NAV BAR-END*/
 
 /*HEADER PAGE*/
 echo '<!--Featured image-->';
@@ -69,7 +68,6 @@ echo '<tbody>';
 if ($resultsCheck > 0) {
   while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
-    
     echo "<td><a class =\"table-row-link\" href=\"individual%20page/university.php?college_name=" . $row['name'] ."\"> " . $row['name'] . "</a></td>";
     echo "<td>" . $row['overall_rating'] . "</td>";
   }
@@ -95,7 +93,7 @@ include 'support elements/footer.php';
 /* FOOTER - END*/
 ?>
 
-<!-- Tile Scheme-->
+<!-- Tile Scheme
 <div class="tiles_wrapper">
   <div class="tile">
     <div class="left_side">
@@ -114,7 +112,7 @@ include 'support elements/footer.php';
     </div>
   </div>
 </div>
-
+-->
 
 <script src="../js/tableSorter.js"></script>
 <script src="../js/tableSearch.js"> </script>

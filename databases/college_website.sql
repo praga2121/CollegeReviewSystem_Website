@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2021 at 11:04 AM
+-- Generation Time: Nov 09, 2021 at 06:04 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -60,15 +60,15 @@ CREATE TABLE `colleges` (
 --
 
 INSERT INTO `colleges` (`college_id`, `name`, `overall_rating`, `college_description`, `url`) VALUES
-(56, 'INTI International College Penang', '0', 'Located in the Bukit Jambul neighborhood of Penang, INTI International College Penang offers world-class programmes delivered by passionate teaching staff. At INTI International College Penang, students can discover the true balance between academics and the arts.', 'https://newinti.edu.my/campuses/inti-international-college-penang/'),
+(56, 'INTI International College Penang', '5.0', 'Located in the Bukit Jambul neighborhood of Penang, INTI International College Penang offers world-class programmes delivered by passionate teaching staff. At INTI International College Penang, students can discover the true balance between academics and the arts.', 'https://newinti.edu.my/campuses/inti-international-college-penang/'),
 (57, 'INTI International College Subang', '0', 'INTI\'s Subang campus provides students with a truly internationally valued skillset. INTI International College Subang is complete with cutting-edge facilities that enhance the higher education experiences of their students', 'https://newinti.edu.my/campuses/inti-international-college-subang/'),
 (58, 'INTI College Sabah', '0', 'INTI College Sabah nurtures academic excellence and provides the relevant experience with the aim to enhance the employability of their students. The campus offers a well rounded student experience with facilities such as a library and hostels with gym facilities.', 'https://newinti.edu.my/campuses/inti-college-sabah/'),
-(60, 'UOW Malaysia KDU Penang University College', '0', 'collegecollege123                              ', 'https://www.uowmkdu.edu.my/campuses/about-the-campus/kdu-penang-university-college-georgetown-campus/'),
-(61, 'UOW Malaysia KDU Penang University College Batu Kawan', '0', 'collegecollege321                              ', 'https://www.uowmkdu.edu.my/campuses/about-the-campus/kdu-penang-university-college-batu-kawan/'),
-(62, 'KDU University College Glenmarie Campus', '0', 'collegecollege123                    ', 'https://www.uowmkdu.edu.my/campuses/about-the-campus/uow-malaysia-kdu-college'),
-(63, 'DISTED College', '0', 'collegecollege123          ', 'https://www.disted.edu.my/'),
-(64, 'SENTRAL College Penang', '0', 'collegecollege123          ', 'https://www.sentral.edu.my/'),
-(65, 'Taylor\'s College', '0', 'collegecollege123          ', 'https://college.taylors.edu.my/en.html');
+(60, 'UOW Malaysia KDU Penang University College', '0', 'UOW Malaysia KDU Penang first opened its doors to students in 1991. Since then, the college has grown to be the most popular private tertiary education provider in the northern region of Malaysia. ', 'https://www.uowmkdu.edu.my/campuses/about-the-campus/kdu-penang-university-college-georgetown-campus/'),
+(61, 'UOW Malaysia KDU Penang University College Batu Kawan', '0', 'UOW Malaysia KDU Penang\'s Batu Kawan campus brings an Australian higher education experience to mainland Penang. It is conceptualized as a green campus in a park environment, with the design being inspired by the Internet of Things. The campus spans 10 acres and houses facilities that support programs from 3 faculties.', 'https://www.uowmkdu.edu.my/campuses/about-the-campus/kdu-penang-university-college-batu-kawan/'),
+(62, 'UOW Malaysia KDU University College Glenmarie Campus', '0', 'The Glenmarie Campus of the UOW Malaysia KDU group boasts state-of-the-art facilities and a contemporary teaching and learning environment for students. Students are able to enjoy an international style campus experience, locally. There are various learning spaces, a library and also culinary and hospitality facilities.', 'https://www.uowmkdu.edu.my/campuses/about-the-campus/uow-malaysia-kdu-college'),
+(63, 'DISTED College', '5.0', 'DISTED is a private college in George Town, Penang. It was first established in the year 1987 as the first private tertiary education institution in Penang. The current campus is located on Macalister Road, which is in close vicinity to downtown George Town, a UNESCO World Heritage Site', 'https://www.disted.edu.my/'),
+(64, 'SENTRAL College Penang', '3.0', 'First established in January 2002, SENTRAL College Penang is committed to the pursuit of educational excellence in the context of respect, caring and justice. It is currently located at an intersection between Penang Street and Bishop Street', 'https://www.sentral.edu.my/'),
+(65, 'Taylor\'s College', '0', 'Taylor\'s College was established in 1969 by George Archibald Taylor and his son, George Leighton Taylor. The current campus is located in Subang Jaya, Selangor. Along Taylor\'s Road.', 'https://college.taylors.edu.my/en.html');
 
 -- --------------------------------------------------------
 
@@ -160,6 +160,20 @@ CREATE TABLE `reviews` (
   `rating` tinyint(1) NOT NULL,
   `submit_date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`review_id`, `college_id`, `subject_id`, `page_id`, `name`, `content`, `rating`, `submit_date`) VALUES
+(42, 56, 2, 1, 'kyler', 'epic school', 5, '2021-10-28 20:29:00'),
+(43, 63, 4, 1, 'Sara', 'Disted has a awesome bakery store. ????????', 5, '2021-10-28 20:46:03'),
+(44, 63, 4, 1, 'Sara', 'Disted has a awesome bakery store. ????????', 5, '2021-10-28 20:46:04'),
+(45, 56, 3, 1, 'H\'ng Yan Shan', 'The lecture are very kind easy to approach them, they gave lots of notes and easy to understand. i like the convenience store, best.', 5, '2021-10-28 20:58:27'),
+(46, 56, 1, 1, 'Padmessh', 'The lecture is helpful and provides resources for students. Vending machines are my favourite on campus', 5, '2021-10-28 21:32:49'),
+(47, 56, 1, 1, 'Jason Lee', 'The best bang for ur buck.', 5, '2021-10-29 10:01:11'),
+(48, 64, 27, 1, 'Sasha', 'The area does not have much parking Slots so do be awared on traffic issues when coming early.', 3, '2021-10-29 11:34:36'),
+(49, 56, 2, 1, 'John Doe ', 'Best lectures ever!', 5, '2021-10-29 11:52:52');
 
 -- --------------------------------------------------------
 
@@ -278,13 +292,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `colleges`
 --
 ALTER TABLE `colleges`
-  MODIFY `college_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `college_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `subjects`
