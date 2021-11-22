@@ -59,7 +59,7 @@ echo '<div class="subject-container">';
 echo '<h2 class="subject-header">Popular Subjects</h2>';
 
 $sql_subject = 
-"SELECT `subjects`.`name`, `price`  
+"SELECT `subjects`.`name`, `price` , `duration`
 FROM `collegesandsubjects` 
 LEFT JOIN `subjects` ON `collegesandsubjects`.`subject_id` = `subjects`.`subject_id` 
 WHERE `collegesandsubjects`.`college_id` = '.$college_id.' AND `subjects`.`subject_id` = `collegesandsubjects`.`subject_id` 
@@ -85,6 +85,13 @@ if ($row_number > 0) {
         echo '    <td>'."RM ". $row_subject["price"].'</td>';
         echo '</tr>';
 
+		echo '<tr>';
+        echo '<td style="font-weight:bold">'."Estimated Duration ".'</td>';
+        echo '</tr>';
+
+		echo '<tr>';
+        echo '<td>'.$row_subject["duration"]." Years".'</td>';
+        echo '</tr>';
         echo '</table>';
     }
 }

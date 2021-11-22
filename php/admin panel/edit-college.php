@@ -24,18 +24,16 @@ try {
     // If there is an error with the connection, stop the script and display the error.
     exit('Failed to connect to database!');
   }
-if (isset($_POST['edited'])) {
 
+if (isset($_POST['edited'])) {
     $collegename = $_POST["collegename"];
     $college_description = $_POST["college_description"];
     $id = $_POST["id"];
     $url =  $_POST["websitelink"];
     $subjects = $_POST["subject"];
     $subjects = array_values(array_filter($subjects, 'array_filter'));
-    
     $subjects = array_filter_recursive($subjects);
 
-  if (!empty($collegename)) {
     $stmt_edit_college = $pdo->prepare("UPDATE colleges 
               SET name = :collegename, 
                   college_description = :college_description, 
@@ -71,6 +69,8 @@ if (isset($_POST['edited'])) {
     }
 
     if ($stmt_edit_college && $stmt_subject) {
+
+    print "CHEEEEECCK L3</br>";
       echo '<!DOCUMENT html>';
       echo '<html>';
       echo '<head>';
@@ -90,7 +90,7 @@ if (isset($_POST['edited'])) {
     } else {
       print mysqli_error($conn);
     }
-  }
+  
 } else {
   $id = $_REQUEST['id'];
   $sql_college = "SELECT * FROM colleges WHERE college_id = '" . $id . "'";

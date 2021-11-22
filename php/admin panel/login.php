@@ -1,14 +1,11 @@
 <?php
 require '../config.php';
 include '../support elements/nav_wide.php';
-
 if (isset($_POST['submitted'])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
   $query = "SELECT email, password from college_website.admin WHERE email = " . "'" . $email . "'" . " AND password = " . "'" . $password . "'";
-
   $result = mysqli_query($conn, $query);
-
   if (@mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
     header("Location: listing.php");
   } else {
@@ -28,22 +25,17 @@ if (isset($_POST['submitted'])) {
   echo '<div class="login-container">';
   echo '<div class="form">';
   echo '<h2>Please Login</h2>';
-
   echo '<form action="login.php" method="POST">';
   if (strpos($actual_link, "error=true") == true) {
     echo '<span class = "error" style="color: red;">Wrong email or password</span>';
   }
   echo '<br/>';
   echo '<br/>';
-  echo '<label for="email" class="email"><b>Email</b></label>';
+  echo '<label for="email" class="login-label"><b>Email</b></label>';
   echo '<p><input type="text" name="email" value="" placeholder="Enter Email"></p>';
-
-  echo '<label for="password" class="password"><b>Password</b></label>';
+  echo '<label for="password" class="login-label"><b>Password</b></label>';
   echo '<p><input type="password" name="password" value="" placeholder="Enter Password"></p>';
-  
   echo '<p class="submit.button"><input type="submit" name="Submit" value="Log-In"></p>';
-  
-
   echo '<input type=\'hidden\' name=\'submitted\' value=\'true\'/>';
   echo '</form>';
   echo '</div>';
@@ -51,3 +43,4 @@ if (isset($_POST['submitted'])) {
   echo '</body>';
   echo '</html>';
 }
+?>
