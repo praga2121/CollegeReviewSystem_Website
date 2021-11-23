@@ -70,7 +70,6 @@ if (isset($_POST['edited'])) {
 
     if ($stmt_edit_college && $stmt_subject) {
 
-    print "CHEEEEECCK L3</br>";
       echo '<!DOCUMENT html>';
       echo '<html>';
       echo '<head>';
