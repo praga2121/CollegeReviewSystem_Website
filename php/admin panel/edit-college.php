@@ -75,7 +75,7 @@ if (isset($_POST['edited'])) {
       echo '<html>';
       echo '<head>';
       echo '<title>Edit | Admin Panel</title>';
-      echo '<link rel="stylesheet" href="../resources/style-admin.css">';
+      echo '<link rel="stylesheet" href="../../css/style-admin.css">';
       echo '<link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
       echo '</head>';
