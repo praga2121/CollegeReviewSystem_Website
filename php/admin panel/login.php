@@ -19,6 +19,7 @@ if (isset($_POST['submitted'])) {
   echo '<title>Login | Admin Panel</title>';
   echo '<link rel="stylesheet" href="../../css/style-admin.css"/>';
   echo '<link rel="preconnect" href="https://fonts.gstatic.com">';
+  echo '<link rel = "icon" href="../../images/title_icon.png" type="image/x-icon"/>';
   echo '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" >';
   echo '</head>';
   echo '<body>';

@@ -73,6 +73,7 @@ if (isset($_POST['edited'])) {
       echo '<!DOCUMENT html>';
       echo '<html>';
       echo '<head>';
+      echo '<link rel = "icon" href="../../images/title_icon.png" type="image/x-icon"/>';
       echo '<title>Edit | Admin Panel</title>';
       echo '<link rel="stylesheet" href="../../css/style-admin.css">';
       echo '<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -110,6 +111,7 @@ if (isset($_POST['edited'])) {
   <html>
   <head>
   <title>Edit | Admin Panel</title>
+  <link rel = "icon" href="../../images/title_icon.png" type="image/x-icon"/>
   <link rel="stylesheet" href="../../css/style-admin.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">

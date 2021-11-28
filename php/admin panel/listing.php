@@ -20,6 +20,7 @@ if (isset($_POST['added'])) {
   }
 } else {
   echo '<link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
+  echo '<link rel = "icon" href="../../images/title_icon.png" type="image/x-icon"/>';
   echo '<link rel="stylesheet" href="../../css/style-admin.css">';
   echo '<title>College Listings | Admin Panel</title>';
   echo '</head>';
