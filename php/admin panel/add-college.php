@@ -55,11 +55,12 @@ if (isset($_POST['added'])) {
       echo '<!DOCUMENT html>';
       echo '<html>';
       echo '<head>';
+
       echo '<link rel = "icon" href="../../images/title_icon.png" type="image/x-icon"/>';
       echo '<title>Add | Admin Panel</title>';
       echo '<link rel="stylesheet" href="../../css/style-admin.css">';
-      echo '<link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
+      echo '<link rel="preconnect" href="https://fonts.gstatic.com">';
+      echo '<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
       echo '</head>';
       echo '<body>';
       echo '<div id="main-container">';
