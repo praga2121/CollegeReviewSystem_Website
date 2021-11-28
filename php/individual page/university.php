@@ -18,6 +18,7 @@ $college_id = $row['college_id'];
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php echo'<title>'.$row["name"].'</title>';?>
 <link rel="stylesheet" href="../../css/style-main.css"/>
+<link rel = "icon" href="../../images/title_icon.png" type="image/x-icon"/>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <link href="../../css/reviews.css" rel="stylesheet" type="text/css">
 

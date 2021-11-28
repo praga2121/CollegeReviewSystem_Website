@@ -51,23 +51,26 @@ if (isset($_POST['added'])) {
     }
 
     if ($stmt_college && $stmt_subject) {
+
       echo '<!DOCUMENT html>';
       echo '<html>';
       echo '<head>';
-      echo '<title>Success | Admin Panel</title>';
+
+      echo '<link rel = "icon" href="../../images/title_icon.png" type="image/x-icon"/>';
+      echo '<title>Add | Admin Panel</title>';
       echo '<link rel="stylesheet" href="../../css/style-admin.css">';
       echo '<link rel="preconnect" href="https://fonts.gstatic.com">';
       echo '<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
       echo '</head>';
       echo '<body>';
-      echo '<div class="main-container">';
-      echo '<h1>Database Successfully Updated</h1>';
+      echo '<div id="main-container">';
+      echo '<h1>Database Updated Successfully</h1>';
+      echo '<a style="color:black" href = "listing.php">Back to college listings</a>';
       echo '</div>';
       echo '</body>';
       echo '</html>';
     } else {
       print mysqli_error($conn);
-      print("ERROR OF PDO");
     }
   }
 } else {
@@ -80,6 +83,7 @@ if (isset($_POST['added'])) {
   <html>
   
     <head>
+      <link rel = "icon" href="../../images/title_icon.png" type="image/x-icon"/>
     	<title>Add College | Admin Panel</title>
       <link rel="stylesheet" href="../../css/style-admin.css">
       <link rel="preconnect" href="https://fonts.gstatic.com">

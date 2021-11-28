@@ -21,6 +21,7 @@ echo '<head>';
 echo '<meta charset="UTF-8">';
 echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
 echo '<title>CollegeReport</title>';
+echo '<link rel = "icon" href="../images/title_icon.png" type="image/x-icon"/>';
 echo '<link rel="stylesheet" href="../css/style-main.css"/>';
 echo '<link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> ';
