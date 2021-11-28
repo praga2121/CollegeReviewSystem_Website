@@ -90,7 +90,7 @@ if ($row_number > 0) {
         echo '</tr>';
 
 		echo '<tr>';
-        echo '<td>'.$row_subject["duration"]." Years".'</td>';
+        echo '<td>'.$row_subject["duration"]." Year(s)".'</td>';
         echo '</tr>';
         echo '</table>';
     }

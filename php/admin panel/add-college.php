@@ -55,7 +55,7 @@ if (isset($_POST['added'])) {
       echo '<html>';
       echo '<head>';
       echo '<title>Success | Admin Panel</title>';
-      echo '<link rel="stylesheet" href="../resources/style-admin.css">';
+      echo '<link rel="stylesheet" href="../../css/style-admin.css">';
       echo '<link rel="preconnect" href="https://fonts.gstatic.com">';
       echo '<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">';
       echo '</head>';
