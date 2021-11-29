@@ -296,26 +296,7 @@ padding-top: 20px;
   align-items: center;
   flex-wrap: wrap;
 }
-.container-feedback .skewBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 180px;
-  height: 80px;
-  outline: none;
-  cursor: pointer;
-  background: none;
-  transition: 0.5s;
-  font-size: 24px;
-  border-radius: 5px;
-  font-family: "Lato", sans-serif;
-}
-.container-feedback .skewBtn:hover {
-  border: none;
-  color: white;
-  font-size: 28px;
-  transform: scale(1.1);
-}
+
 .lorange {
   border: 2px solid #fbc02d;
   color: #fbc02d;
