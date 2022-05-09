@@ -33,6 +33,7 @@ echo '<body>';
 include 'support elements/nav_wide.php';
 /* NAV BAR-END*/
 
+/*this is just a comment section*/
 /*HEADER PAGE*/
 echo '<!--Featured image-->';
 echo '<div class="featured-container">';
@@ -40,7 +41,8 @@ echo '<div class="overlay">';
 echo '<h1 class="top-intro-header">Discover Incredible Colleges</h1>';
 echo '</div>';
 echo '</div>';
-echo '';
+echo ''; 
+
 /*HEADER PAGE - END*/
 
 /*MAIN PAGE CONTAINER*/
