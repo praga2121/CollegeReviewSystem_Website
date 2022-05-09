@@ -33,7 +33,6 @@ echo '<body>';
 include 'support elements/nav_wide.php';
 /* NAV BAR-END*/
 
-/*this is just a comment section*/
 /*HEADER PAGE*/
 echo '<!--Featured image-->';
 echo '<div class="featured-container">';
